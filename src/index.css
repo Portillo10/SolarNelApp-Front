@@ -1,8 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700;800&display=swap");
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Quicksand", Arial, Helvetica, sans-serif;
+  font-weight: 600;
 }
 
 body {
@@ -20,7 +23,6 @@ body {
   width: 100%;
   align-items: center;
   display: flex;
-  /* justify-content: center; */
   gap: 20px;
   border: none;
   flex-direction: row-reverse;
@@ -28,9 +30,19 @@ body {
   background-color: #f0f3f8;
 }
 
+.LateralMenuIcon div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .ShownMenuIcon {
   flex-direction: row;
   transition: all 300ms;
+}
+
+.LateralMenuIcon div p {
+  font-weight: 600;
 }
 
 .LateralMenu {
@@ -44,7 +56,6 @@ body {
   z-index: 1;
   transition: all 900ms;
   width: 310px;
-  /* position: fixed; */
   margin-left: -261px;
 }
 
@@ -67,10 +78,6 @@ body {
 .ShownMenu {
   transition: all 800ms;
   margin: 0;
-}
-
-.ShownMenu button {
-  /* flex-direction: row; */
 }
 
 .GroupButtons {
@@ -123,12 +130,10 @@ body {
 .Card p {
   font-size: 20px;
   font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 .Card h4 {
   font-size: 30px;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 .Card section {
@@ -149,6 +154,10 @@ body {
   gap: 10px;
   overflow: hidden;
   margin-bottom: 80px;
+}
+
+.ChartContainer h4 {
+  font-weight: 700;
 }
 
 .ChartContainer {
@@ -223,6 +232,12 @@ body {
   }
   .ShownMenu {
     margin: 0;
+  }
+  .ChartsContainer {
+    display: none;
+  }
+  .TopMenuIcon {
+    display: none;
   }
 }
 

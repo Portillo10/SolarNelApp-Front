@@ -98,123 +98,86 @@ let options = {
 };
 
 function HomePage() {
-  const [windowWidth, setWindowWidth] = useState();
-  const [activeMenu, setActiveMenu] = useState(false);
-
-  const handleStyleMenuItem = () => {
-    const menuIcons = document.getElementsByClassName("LateralMenuIcon");
-    menuIcons[0].disabled = true;
-    console.log(menuIcons[0].disabled);
-    for (let i = 0; i < menuIcons.length; i++) {
-      menuIcons[i].style.opacity = 0;
-      setTimeout(() => {
-        menuIcons[i].style.opacity = 1;
-        if (menuIcons[i].classList.contains("ShownMenuIcon")) {
-          menuIcons[i].classList.remove("ShownMenuIcon");
-        } else {
-          menuIcons[i].classList.add("ShownMenuIcon");
-        }
-      }, 800);
-    }
-    setTimeout(() => {
-      menuIcons[0].disabled = false;
-    }, 1000);
-  };
-
-  const showMenu = (e) => {
-    setActiveMenu(!activeMenu);
-    handleStyleMenuItem();
-  };
-
-  window.onresize = (e) => {
-    setWindowWidth(window.screen.width);
-    console.log(windowWidth);
-  };
-
-  useEffect(() => {
-    setWindowWidth(window.screen.width);
-  }, []);
-
   return (
     <>
-      <div className="Page">
-        <LateralMenu showMenu={activeMenu} showMenuEvent={showMenu} />
-        <div className="Home">
-          <Head>
-            {windowWidth < 680 ? (
-              <img onClick={showMenu} src={MenuIcon} width="36px" alt="" />
-            ) : (
-              <img />
-            )}
-            <img src={LogoIconTop} width="140px" alt="" />
-            {windowWidth < 680 ? (
-              <img src={ScanQRIcon} width="36px" alt="" />
-            ) : (
-              <img />
-            )}
-          </Head>
-          <CardContainer>
-            <Card
-              color="#FFD699"
-              icon={DangerIcon}
-              title="Reparaciones pendientes"
-              info="25"
+      <div className="Home">
+        <Head>
+          {window.screen.width < 680 ? (
+            <img
+              className="TopMenuIcon"
+              onClick={showMenu}
+              src={MenuIcon}
+              width="36px"
+              alt=""
             />
-            <Card
-              color="#AEDFF7"
-              icon={ReadyIcon}
-              title="Equipos listos para entregar"
-              info="15"
-            />
-            <Card
-              color="#B4B4D8"
-              icon={ToolBoxIcon}
-              title="Equipos reparados hoy"
-              info="17"
-            />
-            <Card
-              color="#8FBC8B"
-              icon={DollarIcon}
-              title="Total de ingresos hoy"
-              info="$150k"
-            />
-            {windowWidth > 680 ? (
-              <div className="ChartsContainer">
-                <ChartCard
-                  title="Equipos reparados esta semana"
-                  data={chartData}
-                  options={options}
-                  type="bar"
-                  color="#f7e8d9"
-                  info={(() => {
-                    let total = 0;
-                    quantities.forEach((quantitie) => {
-                      total += quantitie;
-                    });
-                    return `Total reparados esta semana ${total}`;
-                  })()}
-                />
-                <ChartCard
-                  title="Desempeño de los trabajadores esta semana"
-                  data={pieData}
-                  type="pie"
-                  options={pieOptions}
-                  color="#E6E6FA"
-                />
-              </div>
-            ) : (
-              <></>
-            )}
-          </CardContainer>
+          ) : (
+            <img />
+          )}
+          <img src={LogoIconTop} width="140px" alt="" />
+          {window.screen.width < 680 ? (
+            <img src={ScanQRIcon} width="36px" alt="" />
+          ) : (
+            <img />
+          )}
+        </Head>
+        <CardContainer>
+          <Card
+            color="#FFD699"
+            icon={DangerIcon}
+            title="Reparaciones pendientes"
+            info="25"
+          />
+          <Card
+            color="#AEDFF7"
+            icon={ReadyIcon}
+            title="Equipos listos para entregar"
+            info="15"
+          />
+          <Card
+            color="#B4B4D8"
+            icon={ToolBoxIcon}
+            title="Equipos reparados hoy"
+            info="17"
+          />
+          <Card
+            color="#8FBC8B"
+            icon={DollarIcon}
+            title="Total de ingresos hoy"
+            info="$150k"
+          />
 
-          <GroupButtons>
-            <MenuButton icon={ReportIcon} />
-            <MenuButton icon={EmployeeIcon} />
-            <MenuButton icon={AddIcon} addButton={true} />
-            <MenuButton icon={RepairIcon} />
-            <MenuButton icon={BarsDiagramIcon} />
-          </GroupButtons>
-        </div>
+          <div className="ChartsContainer">
+            <ChartCard
+              title="Equipos reparados esta semana"
+              data={chartData}
+              options={options}
+              type="bar"
+              color="#f7e8d9"
+              info={(() => {
+                let total = 0;
+                quantities.forEach((quantitie) => {
+                  total += quantitie;
+                });
+                return `Total reparados esta semana ${total}`;
+              })()}
+            />
+            <ChartCard
+              title="Desempeño de los trabajadores esta semana"
+              data={pieData}
+              type="pie"
+              options={pieOptions}
+              color="#E6E6FA"
+            />
+          </div>
+        </CardContainer>
+
+        <GroupButtons>
+          <MenuButton icon={ReportIcon} />
+          <MenuButton icon={EmployeeIcon} />
+          <MenuButton icon={AddIcon} addButton={true} />
+          <MenuButton icon={RepairIcon} />
+          <MenuButton icon={BarsDiagramIcon} />
+        </GroupButtons>
       </div>
     </>
   );
