@@ -1,7 +1,7 @@
-function Head(props) {
+function Head({ children }) {
   return (
     <>
-      <header className="Head">{props.children}</header>
+      <header className="Head">{children}</header>
     </>
   );
 }

@@ -12,13 +12,14 @@ import RepairIcon from "/svg/LateralMenuIcons/Repair_icon2.svg";
 import ReportActivityIcon from "/svg/LateralMenuIcons/ReportActivity_icon.svg";
 import UsersIcon from "/svg/LateralMenuIcons/users_icon.svg";
 import QRCodeIcon from "/svg/LateralMenuIcons/QRCode_Icon.svg";
+import { useEffect } from "react";
 
-function LateralMenu(props) {
+function LateralMenu({ showMenu, showMenuEvent }) {
   return (
     <>
-      <div className={`LateralMenu ${props.showMenu ? "ShownMenu" : ""}`}>
+      <div className={`LateralMenu ${showMenu ? "ShownMenu" : ""}`}>
         <section>
-          <MenuItem event={props.showMenuEvent} icon={MenuIcon}></MenuItem>
+          <MenuItem event={showMenuEvent} icon={MenuIcon}></MenuItem>
           <MenuItem icon={ProfileIcon}>
             <p>Mi Perfil</p>
           </MenuItem>

@@ -1,7 +1,7 @@
-function GroupButtons(props) {
+function GroupButtons({ children }) {
   return (
     <>
-      <div className="GroupButtons">{props.children}</div>
+      <div className="GroupButtons">{children}</div>
     </>
   );
 }

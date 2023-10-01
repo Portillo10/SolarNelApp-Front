@@ -1,12 +1,21 @@
 import { useEffect, useState } from "react";
 import HomePage from "./pages/HomePage";
 import LateralMenu from "./components/LateralMenu";
+import Head from "./components/Head";
+
+import LogoIconTop from "/svg/Header/Logo_IconTop.svg";
+import MenuIcon from "/svg/Header/Menu_Icon.svg";
+import ScanQRIcon from "/svg/Header/ScanQR_icon.svg";
+
+// Chart.defaults.color = "#fff";
 
 function App() {
   const [activeMenu, setActiveMenu] = useState(false);
 
+  const menuIcons = document.getElementsByClassName("LateralMenuIcon");
+  const LateralMenuElement = document.getElementsByClassName("LateralMenu")[0];
+
   const handleStyleMenuItem = () => {
-    const menuIcons = document.getElementsByClassName("LateralMenuIcon");
     menuIcons[0].disabled = true;
     for (let i = 0; i < menuIcons.length; i++) {
       menuIcons[i].style.opacity = 0;
@@ -29,11 +38,45 @@ function App() {
     handleStyleMenuItem();
   };
 
+  const hideMenu = () => {
+    if (activeMenu) {
+      setActiveMenu(false);
+
+      for (let i = 0; i < menuIcons.length; i++) {
+        menuIcons[i].style.opacity = 0;
+        setTimeout(() => {
+          menuIcons[i].style.opacity = 1;
+          menuIcons[i].classList.remove("ShownMenuIcon");
+        }, 800);
+      }
+    }
+  };
+
+  window.onclick = (e) => {
+    if (!LateralMenuElement) return;
+    if (e.clientX > LateralMenuElement.clientWidth) {
+      hideMenu();
+    }
+  };
+
   return (
     <>
       <div className="Page">
         <LateralMenu showMenu={activeMenu} showMenuEvent={showMenu} />
-        <HomePage />
+        <div className="MainPage">
+          <Head>
+            <img
+              className="TopMenuIcon"
+              onClick={showMenu}
+              src={MenuIcon}
+              width="36px"
+              alt=""
+            />
+            <img src={LogoIconTop} width="140px" alt="" />
+            <img src={ScanQRIcon} className="TopMenuIcon" width="36px" alt="" />
+          </Head>
+          <HomePage />
+        </div>
       </div>
     </>
   );

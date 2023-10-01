@@ -11,15 +11,10 @@ import EmployeeIcon from "/svg/MenuButtons/Employee_icon.svg";
 import RepairIcon from "/svg/MenuButtons/Repair_icon.svg";
 import ReportIcon from "/svg/MenuButtons/report_icon.svg";
 
-import LogoIconTop from "/svg/Header/Logo_IconTop.svg";
-import MenuIcon from "/svg/Header/Menu_Icon.svg";
-import ScanQRIcon from "/svg/Header/ScanQR_icon.svg";
-
 import DollarIcon from "/svg/CardIcons/Dollar_Icon.svg";
 import DangerIcon from "/svg/CardIcons/Danger_Icon.svg";
 import ReadyIcon from "/svg/CardIcons/Ready_Icon.svg";
 import ToolBoxIcon from "/svg/CardIcons/ToolBox_Icon.svg";
-import LateralMenu from "../components/LateralMenu.jsx";
 import { useEffect, useState } from "react";
 
 const labels = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
@@ -52,12 +47,12 @@ let pieOptions = {
       display: true,
       position: "right",
       labels: {
-        // This more specific font property overrides the global property
         font: {
           size: 16,
-          family: '"Arial", "Helvetica", "sans-serif"',
+          family: "QuickSand",
+          weight: "bold",
         },
-        fontColor: "black",
+        color: "black",
       },
     },
     title: {
@@ -83,17 +78,6 @@ let options = {
     legend: {
       display: false,
     },
-    scales: {
-      xAxes: [
-        {
-          scaleLabel: {
-            display: true,
-            // fontSize: 24,
-            fontColor: "green",
-          },
-        },
-      ],
-    },
   },
 };
 
@@ -101,46 +85,27 @@ function HomePage() {
   return (
     <>
       <div className="Home">
-        <Head>
-          {window.screen.width < 680 ? (
-            <img
-              className="TopMenuIcon"
-              onClick={showMenu}
-              src={MenuIcon}
-              width="36px"
-              alt=""
-            />
-          ) : (
-            <img />
-          )}
-          <img src={LogoIconTop} width="140px" alt="" />
-          {window.screen.width < 680 ? (
-            <img src={ScanQRIcon} width="36px" alt="" />
-          ) : (
-            <img />
-          )}
-        </Head>
         <CardContainer>
           <Card
-            color="#FFD699"
+            type="Danger"
             icon={DangerIcon}
             title="Reparaciones pendientes"
             info="25"
           />
           <Card
-            color="#AEDFF7"
+            type="Ready"
             icon={ReadyIcon}
             title="Equipos listos para entregar"
             info="15"
           />
           <Card
-            color="#B4B4D8"
+            type="Repair"
             icon={ToolBoxIcon}
             title="Equipos reparados hoy"
             info="17"
           />
           <Card
-            color="#8FBC8B"
+            type="Money"
             icon={DollarIcon}
             title="Total de ingresos hoy"
             info="$150k"

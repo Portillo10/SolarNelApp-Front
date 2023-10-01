@@ -1,15 +1,8 @@
-function MenuButton(props) {
-  const showWindowWidth = () => {
-    alert(window.screen.width);
-  };
-
+function MenuButton({ addButton, icon }) {
   return (
     <>
-      <button
-        onClick={showWindowWidth}
-        className={props.addButton ? "MenuButton AddButton" : "MenuButton"}
-      >
-        <img src={props.icon} alt="" />
+      <button className={addButton ? "MenuButton AddButton" : "MenuButton"}>
+        <img src={icon} alt="" />
       </button>
     </>
   );

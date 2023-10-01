@@ -1,7 +1,7 @@
-function CardContainer(props) {
+function CardContainer({ children }) {
   return (
     <>
-      <div className="CardContainer">{props.children}</div>
+      <div className="CardContainer">{children}</div>
     </>
   );
 }

@@ -1,12 +1,14 @@
-function Card(props) {
+import { useEffect } from "react";
+
+function Card({ type, title, info, icon }) {
   return (
     <>
-      <div className="Card" style={{ backgroundColor: props.color }}>
+      <div className={`Card ${type}`}>
         <section>
-          <p>{props.title}</p>
-          <h4>{props.info}</h4>
+          <p>{title}</p>
+          <h4>{info}</h4>
         </section>
-        <img src={props.icon} alt="" />
+        <img src={icon} alt="" />
       </div>
     </>
   );
