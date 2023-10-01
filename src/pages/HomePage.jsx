@@ -49,7 +49,7 @@ let pieOptions = {
       labels: {
         font: {
           size: 16,
-          family: "QuickSand",
+          family: "quicksand",
           weight: "bold",
         },
         color: "black",
