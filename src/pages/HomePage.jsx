@@ -1,7 +1,4 @@
 import Card from "../components/Card.jsx";
-import CardContainer from "../components/CardContainer.jsx";
-import GroupButtons from "../components/GroupButtons.jsx";
-import Head from "../components/Head.jsx";
 import MenuButton from "../components/MenuButton.jsx";
 import ChartCard from "../components/ChartCard.jsx";
 
@@ -49,7 +46,7 @@ let pieOptions = {
       labels: {
         font: {
           size: 16,
-          family: "quicksand",
+          family: ["quicksand", "Arial"],
           weight: "bold",
         },
         color: "black",
@@ -85,7 +82,7 @@ function HomePage() {
   return (
     <>
       <div className="Home">
-        <CardContainer>
+        <section className="CardContainer">
           <Card
             type="Danger"
             icon={DangerIcon}
@@ -134,15 +131,15 @@ function HomePage() {
               color="#E6E6FA"
             />
           </div>
-        </CardContainer>
+        </section>
 
-        <GroupButtons>
+        <div className="GroupButtons">
           <MenuButton icon={ReportIcon} />
           <MenuButton icon={EmployeeIcon} />
           <MenuButton icon={AddIcon} addButton={true} />
           <MenuButton icon={RepairIcon} />
           <MenuButton icon={BarsDiagramIcon} />
-        </GroupButtons>
+        </div>
       </div>
     </>
   );

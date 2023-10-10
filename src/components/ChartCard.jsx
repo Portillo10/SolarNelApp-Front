@@ -42,7 +42,7 @@ function ChartCard({ color, title, type, data, options, info }) {
                 options={options}
                 data={data}
                 // height={140}
-                width={420}
+                width={400}
               ></Pie>
             );
           else

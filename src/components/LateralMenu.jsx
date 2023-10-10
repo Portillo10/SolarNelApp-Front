@@ -45,7 +45,7 @@ function LateralMenu({ showMenu, showMenuEvent }) {
             <img src={ArrowIcon} alt="" />
           </MenuItem>
           <MenuItem icon={InventoryIcon}>
-            <p>Inventario</p>
+            <p>Repuestos</p>
           </MenuItem>
           <MenuItem icon={ConfigIcon}>
             <p>Configuración</p>
