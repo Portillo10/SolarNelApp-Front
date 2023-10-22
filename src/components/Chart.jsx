@@ -3,22 +3,6 @@ import { useEffect, useState } from "react";
 function Chart({ data, colors, labels, type }) {
   const max = Math.max(...data);
 
-  // const sum = data.reduce((a, b) => a + b);
-  // let backgroundStyle = "conic-gradient(from 0deg, \n" + colors[0] + " 0, \n";
-  // let stringPercents = "";
-  // data.forEach((element, i) => {
-  //   let percent = Math.round((element / sum) * 100);
-  //   stringPercents += `${percent}%`;
-  //   let line = `${colors[i]} calc(${stringPercents}%)${
-  //     i < data.length - 1
-  //       ? ",\n " + colors[i + 1] + ` calc(${stringPercents}%), \n`
-  //       : ""
-  //   }`;
-  //   backgroundStyle += line;
-  //   stringPercents += `${i < data.length - 1 ? " + " : ""}`;
-  // });
-  // backgroundStyle += ");";
-
   return (
     <>
       {type == "bar" ? (

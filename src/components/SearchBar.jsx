@@ -1,6 +1,10 @@
 import searchIcon from "../assets/svg/Search_icon.svg";
+import { useContext } from "react";
+import { RepairsContext } from "../Contexts/RepairsContext";
 
-function SearchBar({ setSearch }) {
+function SearchBar() {
+  const { setSearch } = useContext(RepairsContext);
+
   const textChange = (e) => {
     setSearch(e.target.value);
   };

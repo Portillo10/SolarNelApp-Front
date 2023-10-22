@@ -14,49 +14,58 @@ import UsersIcon from "/svg/LateralMenuIcons/users_icon.svg";
 import QRCodeIcon from "/svg/LateralMenuIcons/QRCode_Icon.svg";
 import { useEffect } from "react";
 
-function LateralMenu({ showMenu, showMenuEvent }) {
+import { useContext } from "react";
+import { MenuContext } from "../Contexts/MenuContext";
+
+function LateralMenu() {
+  const { handleStyleMenuItem, activeMenu } = useContext(MenuContext);
+
   return (
     <>
-      <div className={`LateralMenu ${showMenu ? "ShownMenu" : ""}`}>
-        <section>
-          <MenuItem event={showMenuEvent} icon={MenuIcon}></MenuItem>
-          <MenuItem icon={ProfileIcon}>
-            <p>Mi Perfil</p>
-          </MenuItem>
-          <MenuItem icon={HomeIcon}>
+      <nav className={`LateralMenu ${activeMenu ? "ShownMenu" : ""}`}>
+        <ul>
+          <MenuItem
+            event={handleStyleMenuItem}
+            route={undefined}
+            icon={MenuIcon}
+          ></MenuItem>
+          <MenuItem icon={HomeIcon} route="/">
             <p>Inicio</p>
           </MenuItem>
-          <MenuItem icon={RepairIcon}>
-            <p>Reparaciones</p>
-            <img src={ArrowIcon} alt="" />
+          <MenuItem icon={ProfileIcon} route="/profile">
+            <p>Mi Perfil</p>
           </MenuItem>
-          <MenuItem icon={ReportActivityIcon}>
+          <MenuItem icon={RepairIcon} route="/repairs">
+            <p>Reparaciones</p>
+            {/* <img src={ArrowIcon} alt="" /> */}
+          </MenuItem>
+          <MenuItem icon={ReportActivityIcon} route="/reportactivity">
             <p>Registro de actividad</p>
           </MenuItem>
-          <MenuItem icon={BarsDiagramIcon}>
+          <MenuItem icon={BarsDiagramIcon} route="/stadistics">
             <p>Consultar estadísticas</p>
           </MenuItem>
-          <MenuItem icon={UsersIcon}>
+          <MenuItem icon={UsersIcon} route="/users">
             <p>Cuentas de usuario</p>
             <img src={ArrowIcon} alt="" />
           </MenuItem>
-          <MenuItem icon={QRCodeIcon}>
+          <MenuItem icon={QRCodeIcon} route="/qrcodes">
             <p>Generar códigos</p>
             <img src={ArrowIcon} alt="" />
           </MenuItem>
-          <MenuItem icon={InventoryIcon}>
+          <MenuItem icon={InventoryIcon} route="/replacements">
             <p>Repuestos</p>
           </MenuItem>
-          <MenuItem icon={ConfigIcon}>
+          <MenuItem icon={ConfigIcon} route="/settings">
             <p>Configuración</p>
           </MenuItem>
-        </section>
-        <section>
-          <MenuItem icon={OffIcon}>
+        </ul>
+        <ul>
+          <MenuItem icon={OffIcon} route="/exit">
             <p>Cerrar sesion</p>
           </MenuItem>
-        </section>
-      </div>
+        </ul>
+      </nav>
     </>
   );
 }

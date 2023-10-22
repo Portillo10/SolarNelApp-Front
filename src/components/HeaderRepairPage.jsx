@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { RepairsContext } from "../Contexts/RepairsContext.jsx";
 
-function HeaderRepairPage({ currentScrollIndex }) {
+function HeaderRepairPage() {
+  const { currentScrollIndex } = useContext(RepairsContext);
   const scroll = (index) => {
     const slider = document.getElementsByClassName("Slider")[0];
 

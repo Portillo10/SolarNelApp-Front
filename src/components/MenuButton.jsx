@@ -1,9 +1,9 @@
-import Axios from "axios";
+import axios from "axios";
 
 function MenuButton({ addButton, icon }) {
   const get = async () => {
     console.log("funciona");
-    const response = await Axios.get("https://reqres.in/api/users?page=2");
+    const response = await axios.get("https://reqres.in/api/users?page=2");
     console.log(response);
   };
 
