@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 function Chart({ data, colors, labels, type }) {
   const max = Math.max(...data);
 
@@ -12,10 +10,10 @@ function Chart({ data, colors, labels, type }) {
               <div key={i} className="flex flex-col justify-end ">
                 <p className="text-center">{element}</p>
                 <span
+                  className="rounded-t-md transition-all"
                   style={{
                     height: (110 / max) * element,
                     backgroundColor: colors[i],
-                    borderRadius: "5px 5px 0px 0px",
                   }}
                 ></span>
                 <p className="text-sm text-center">{labels[i]}</p>

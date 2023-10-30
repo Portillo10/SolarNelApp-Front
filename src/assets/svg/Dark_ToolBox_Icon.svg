@@ -1,0 +1,11 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+	<title>ToolBox_Icon-svg</title>
+	<defs>
+		<image  width="128" height="69" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAABFAQMAAAC41XyPAAAAAXNSR0IB2cksfwAAAAZQTFRFAAAA////pdmf3QAAAAJ0Uk5TAP9bkSK1AAAAoUlEQVR4nO3TsQ2EMAwFUCMKSkbIKBkNNruMwggpOQnFnGOdHRuokE5X8AtLeSnsYAFwGqzR88CQBEaGLBAYVoHIsAlMF1Bc1yPgLVh5PIXMD7iE7j8gvL+jvzLfNyHoW0ggW+IsIFvS1QQPsQVazdRCcV0RZ9uV+g4WFg/ZjkF9g4doYfNQ7FwE6PLA59uPWiukXmuFudN6DvwLwQHgd7AD4I70dJeiu4sAAAAASUVORK5CYII="/>
+		<image  width="128" height="36" id="img2" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAAAkAQMAAAB7faBwAAAAAXNSR0IB2cksfwAAAAZQTFRF////AAAAVcLTfgAAAAJ0Uk5T/wDltzBKAAAANklEQVR4nGNgAIL//xEkwwAK1P9DkNgF7P8gSDCQ/4EgRwENQAMqlxFdgJnhAKoAO8MHVAF+AIdoLUNRFYX+AAAAAElFTkSuQmCC"/>
+	</defs>
+	<style>
+	</style>
+	<use id="Layer" href="#img1" x="0" y="7"/>
+	<use id="Layer" href="#img2" x="0" y="84"/>
+</svg>

@@ -1,0 +1,11 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+	<title>Ready_Icon-svg</title>
+	<defs>
+		<image  width="128" height="128" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAQMAAAD58POIAAAAAXNSR0IB2cksfwAAAAZQTFRFAAAA////pdmf3QAAAAJ0Uk5TAP9bkSK1AAABjUlEQVR4nMWWQZKEIAxFoViw5AjcZDiaHs2jeASXLrpkkBBIPlPtTM2iWckrSUKQ/zWmDp/zZuRYcr7k3OUydgHSDeQruY4x9whihiVLBS8MceqkOR8dBAKjDoopaqeYeVUxrzjKsJThSyUZr1PhLzm/kxwKpB+6ZQDoEEZuq5WxK+AwpoeyyubVidwAkkRIUgo9EOispVCd1WBWg1uzM4C6HNY1AY+Feiw0zGDXIM5gewAJ9/YboOelYY/gegLYMIP9+Rg4/wnKRZuBypI+B1TXy6EsfwQlgD7sGbzgg6lgHXM7g7P0SABXwfYG3HdF3YYJhAoOCXZ9xWIFpwSbvqYJwVKqtFq+Vy0G9TkrqTVKUFxdLiSHgBAlkjQhW6EWKYSNHoX00ctCHElZfS+kSe0Q2PY0JJiltot0bIu7jKcWvgs9ewRbgeO1bBaBTYPtJHG6Zji2+5Ylj4vDiKqFOWGfzdaGfUYG3JjAgFvnGGyjD2COi47Zo47vwqPhWvRX+hGQd83jr4KBPwV5Ft8M/+7QjxvNOQAAAABJRU5ErkJggg=="/>
+		<image  width="93" height="74" id="img2" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF0AAABKAQMAAADjbMqjAAAAAXNSR0IB2cksfwAAAAZQTFRFAAAA////pdmf3QAAAAJ0Uk5TAP9bkSK1AAAA3klEQVR4nKWTQQ6CMBRE23SBu17ApNdwZS9mUo8GNyHxAuxkQRj/N+H/CVEWyqpTSl9npoTw+bmwuLFYaRxBIqF30bHIGF0UTC4qZheN34C+iaDdEnAnDJ0gg85WsPyLcbHDkDjCkNhhXBxhfnYTe3KTxuChdRNh8kyYshCmroRpIMx7n82AEiw0nbRudLm50Y3MjSLMjc6aG11vbnQny0kYg+cEPPwKNDw9tAp4aEWEhSadeWgC8tAE5HUIiOoA37TG3dSv3WTupuNuEv8EkX+PQBgB0ThcWZxZnLbBCzWwyWt38gW/AAAAAElFTkSuQmCC"/>
+	</defs>
+	<style>
+	</style>
+	<use id="Layer" href="#img1" x="0" y="0"/>
+	<use id="Layer" href="#img2" x="29" y="16"/>
+</svg>

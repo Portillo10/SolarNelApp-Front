@@ -1,3 +1,5 @@
+import { useRepair } from "../hooks/UseRepair";
+
 const propsFormat = {
   range: "KM",
   input: "V",
@@ -13,6 +15,8 @@ const tagColors = {
 };
 
 function CardRepair({ children, device }) {
+  const { setCurrentDevice } = useRepair();
+
   const { customerName, deviceBrand, deviceID, deviceType, deviceProps } =
     device;
 
@@ -33,7 +37,7 @@ function CardRepair({ children, device }) {
       return (
         <p
           key={i}
-          className="PropTag"
+          className="PropTag "
           style={{ backgroundColor: tagColors[prop] }}
         >
           {`${deviceProps[prop]} ${propsFormat[prop]}`}
@@ -44,7 +48,13 @@ function CardRepair({ children, device }) {
 
   return (
     <>
-      <div className="CardRepair">
+      <div
+        className="CardRepair"
+        onClick={() => {
+          // setShowDeviceInfo(true);
+          setCurrentDevice(device);
+        }}
+      >
         <section className="flex flex-col py-2 px-4 align-middle justify-center">
           <h3 className="text-center text-xl">#{deviceID}</h3>
           <p className="w-16 text-center">{customerName}</p>
@@ -54,7 +64,7 @@ function CardRepair({ children, device }) {
           style={{ borderLeft: "2px solid gray" }}
         >
           <p>{deviceType + " " + deviceBrand}</p>
-          <div className="flex gap-1">{getTags}</div>
+          <div className="flex gap-1 mb-2">{getTags}</div>
           {children ? children : <p className="text-red-600">Revisar</p>}
         </section>
       </div>

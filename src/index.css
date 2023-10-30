@@ -1,11 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700;800&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 button {
-  outline: none;
   user-select: none;
 }
 
@@ -18,11 +17,13 @@ img {
 }
 
 * {
+  outline: none;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
   font-family: "Quicksand", Arial, Helvetica, sans-serif;
   font-weight: 600;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -64,7 +65,7 @@ body::-webkit-scrollbar-thumb {
   gap: 20px;
   border: none;
   flex-direction: row-reverse;
-  background-color: #f0f3f8;
+  background-color: transparent;
 }
 
 .LateralMenuLi {
@@ -73,7 +74,7 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   border: none;
   flex-direction: row-reverse;
-  background-color: #f0f3f8;
+  background-color: transparent;
 }
 
 .LateralMenuIcon div {
@@ -97,12 +98,11 @@ body::-webkit-scrollbar-thumb {
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  background-color: #f0f3f8;
   z-index: 1;
-  transition: all 400ms ease;
+  transition: all 300ms ease;
   width: 310px;
   position: fixed;
-  left: -261px;
+  left: -260px;
   overflow: auto;
 }
 
@@ -148,45 +148,22 @@ body::-webkit-scrollbar-thumb {
 
 .MenuButton {
   border-radius: 100%;
-  background-color: #3498db;
   width: 52px;
   height: 52px;
   padding: 10px;
   border: none;
-  box-shadow: 0px 4px 5px rgb(61, 61, 61);
   margin-top: 0;
   user-select: none;
-}
-
-.MenuButton:hover {
-  background-color: #2980b9;
 }
 
 .Card {
   width: 285px;
   height: 135px;
   display: flex;
-  box-shadow: 4px 4px 5px rgb(61, 61, 61);
   border-radius: 15px;
   padding: 20px;
   justify-content: space-between;
   gap: 15px;
-}
-
-.Danger {
-  background: linear-gradient(to right, #ffd699, #fdeac0);
-}
-
-.Ready {
-  background: linear-gradient(to right, #aedff7, #e4f4fd);
-}
-
-.Repair {
-  background: linear-gradient(to right, #b4b4d8, #dbdbf5);
-}
-
-.Money {
-  background: linear-gradient(to right, #8fbc8b, #b0e2ac);
 }
 
 @media screen and (max-width: 650px) {
@@ -217,8 +194,6 @@ body::-webkit-scrollbar-thumb {
 
 .CardContainer {
   display: flex;
-  background-color: #f5f5f5;
-  box-shadow: 0px 4px 10px rgb(61, 61, 61);
   border-radius: 20px;
   width: 100%;
   padding: 20px;
@@ -227,8 +202,13 @@ body::-webkit-scrollbar-thumb {
   overflow: hidden;
   margin-bottom: 80px;
   flex-wrap: wrap;
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
 }
 
+.CardContainer::-webkit-scrollbar-thumb:hover {
+  background-color: #2980b9;
+}
 .ChartContainer h4 {
   font-weight: 700;
 }
@@ -238,7 +218,6 @@ body::-webkit-scrollbar-thumb {
   align-items: center;
   justify-content: flex-start;
   border-radius: 20px;
-  box-shadow: 4px 4px 5px rgb(61, 61, 61);
   padding: 10px;
   gap: 6px;
   overflow: auto;
@@ -264,6 +243,11 @@ body::-webkit-scrollbar-thumb {
   align-items: center;
   padding: 10px 16px;
   overflow: hidden;
+  height: 100vh;
+}
+
+.MainPage::-webkit-scrollbar {
+  display: none;
 }
 
 .AddButton {
@@ -315,6 +299,9 @@ body::-webkit-scrollbar-thumb {
   .Card p {
     font-size: 20px;
   }
+  *::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @media screen and (max-height: 480px) {
@@ -333,14 +320,16 @@ body::-webkit-scrollbar-thumb {
 }
 
 .RepairPage {
+  position: relative;
   display: flex;
   background-color: #f5f5f5;
   box-shadow: 0px 4px 10px rgb(61, 61, 61);
-  flex-direction: column;
+  flex-direction: row;
   border-radius: 20px;
   max-height: calc(100vh - 120px);
   width: 100%;
-  overflow: hidden;
+  transition: all 0.25s ease;
+  max-width: 1020px;
 }
 
 .RepairHeader {
@@ -355,20 +344,23 @@ body::-webkit-scrollbar-thumb {
   flex-grow: 1;
 }
 
-.RepairHeader a {
+.RepairHeader p {
   font-weight: 700;
-  height: 70%;
+  height: 65%;
+  user-select: none;
 }
 
 .ActiveRepairFilter {
   color: #004080;
   border-bottom: 4px solid #004080;
+  padding-bottom: 39px;
 }
 
 .RepairBox {
   display: flex;
-  height: calc(100% - 60px);
+  height: calc(100% - 130px);
   overflow: auto;
+  border-radius: 20px;
 }
 
 .Slider {
@@ -384,6 +376,24 @@ body::-webkit-scrollbar-thumb {
   display: none;
 }
 
+*::-webkit-scrollbar {
+  width: 4px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #adc2d8;
+  border-radius: 5px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #2980b9;
+}
+
+#RepairDetail::-webkit-scrollbar-thumb {
+  background-color: #ccb690;
+}
+#RepairDetail::-webkit-scrollbar-thumb:hover {
+  background-color: #7f7159;
+}
 .CardRepairsBox {
   min-width: 100%;
   max-height: 100%;
@@ -408,10 +418,14 @@ body::-webkit-scrollbar-thumb {
   cursor: pointer;
 }
 
+#InfoContainer::-webkit-scrollbar {
+  display: none;
+}
+
 .CardRepair {
   display: flex;
   padding: 5px 4px;
-  box-shadow: 4px 4px 4px rgb(114, 114, 114);
+  box-shadow: 0px 4px 4px rgb(158, 158, 158);
   margin-bottom: 10px;
   border-radius: 15px;
   background-color: white;
@@ -423,6 +437,7 @@ body::-webkit-scrollbar-thumb {
   border-radius: 18px;
   font-weight: 700;
   font-size: 14px;
+  box-shadow: 4px 4px 3px rgb(156, 156, 156);
 }
 
 .SearchBar {
@@ -457,7 +472,7 @@ body::-webkit-scrollbar-thumb {
   .PropTag {
     font-size: 10px;
   }
-  .RepairHeader a {
+  .RepairHeader p {
     font-size: 14px;
   }
 }

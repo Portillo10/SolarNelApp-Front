@@ -1,24 +1,24 @@
 import HeaderRepairPage from "../components/HeaderRepairPage.jsx";
 import SearchBar from "../components/SearchBar.jsx";
 
-import "bootstrap/dist/css/bootstrap.min.css";
-
 import { RepairsProvider } from "../Contexts/RepairsContext.jsx";
 import RepairBox from "../components/RepairBox.jsx";
 import DeviceInfoPage from "./DeviceInfoPage.jsx";
+import RepairDetailPage from "./RepairDetailPage.jsx";
 
 function RepairPage() {
   return (
     <>
       <RepairsProvider>
         <div className="RepairPage">
-          <section>
+          <section className="h-full overflow-hidden rounded-[20px]">
             <HeaderRepairPage />
             <SearchBar />
+            <RepairBox />
           </section>
-          <RepairBox />
+          <DeviceInfoPage />
+          <RepairDetailPage />
         </div>
-        {/* <DeviceInfoPage></DeviceInfoPage> */}
       </RepairsProvider>
     </>
   );

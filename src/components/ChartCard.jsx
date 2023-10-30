@@ -1,7 +1,5 @@
-import { useEffect } from "react";
 import {
   Chart as ChartJS,
-  // TooltipLabelStyle,
   ArcElement,
   CategoryScale,
   LinearScale,
@@ -33,18 +31,11 @@ ChartJS.register(
 function ChartCard({ color, title, type, data, options, info }) {
   return (
     <>
-      <div className="ChartContainer" style={{ backgroundColor: color }}>
+      <div className={`ChartContainer ${color} shadow-card dark:shadow-none`}>
         <h4>{title}</h4>
         {(() => {
           if (type == "pie")
-            return (
-              <Pie
-                options={options}
-                data={data}
-                // height={140}
-                width={400}
-              ></Pie>
-            );
+            return <Pie options={options} data={data} width={400}></Pie>;
           else
             return (
               <Chart

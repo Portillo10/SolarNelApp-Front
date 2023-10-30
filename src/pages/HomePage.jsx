@@ -2,17 +2,22 @@ import Card from "../components/Card.jsx";
 import MenuButton from "../components/MenuButton.jsx";
 import ChartCard from "../components/ChartCard.jsx";
 
-import AddIcon from "/svg/MenuButtons/add_icon.svg";
-import BarsDiagramIcon from "/svg/MenuButtons/Bars_diagram_icon.svg";
-import EmployeeIcon from "/svg/MenuButtons/Employee_icon.svg";
-import RepairIcon from "/svg/MenuButtons/Repair_icon.svg";
-import ReportIcon from "/svg/MenuButtons/report_icon.svg";
-
-import DollarIcon from "/svg/CardIcons/Dollar_Icon.svg";
-import DangerIcon from "/svg/CardIcons/Danger_Icon.svg";
-import ReadyIcon from "/svg/CardIcons/Ready_Icon.svg";
-import ToolBoxIcon from "/svg/CardIcons/ToolBox_Icon.svg";
-import { useEffect, useState } from "react";
+import {
+  AddIcon,
+  BarsDiagramIcon,
+  EmployeeIcon,
+  RepairIconButton,
+  ReportIcon,
+  MoneyIcon,
+  DarkMoneyIcon,
+  DangerIcon,
+  DarkDangerIcon,
+  ReadyIcon,
+  DarkReadyIcon,
+  ToolBoxIcon,
+  DarkToolBoxIcon,
+} from "../hooks/Icons.jsx";
+import { useMenu } from "../hooks/UseMenu.jsx";
 
 const labels = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
 const quantities = [12, 14, 15, 6, 9];
@@ -23,50 +28,6 @@ const labelsPie = [
   "Gustavo Petro",
 ];
 const quantitiesPie = [12, 16, 17, 11];
-
-let pieData = {
-  labels: labelsPie,
-  datasets: [
-    {
-      label: "Equipos reparados",
-      data: quantitiesPie,
-      backgroundColor: ["#7779ff", "#2ec7cc", "#babbff", "#f4c211"],
-      borderColor: ["#7779ff", "#2ec7cc", "#babbff", "#f4c211"],
-    },
-  ],
-};
-
-let pieOptions = {
-  responsive: false,
-  animation: true,
-  plugins: {
-    legend: {
-      display: true,
-      position: "right",
-      labels: {
-        font: {
-          size: 16,
-          family: ["quicksand", "Arial"],
-          weight: "bold",
-        },
-        color: "black",
-      },
-    },
-    title: {
-      display: false,
-    },
-  },
-};
-
-let chartData = {
-  labels,
-  datasets: [
-    {
-      data: quantities,
-      backgroundColor: ["#babbff", "#f4c111", "#7879ff", "#25a65b", "#f48b53"],
-    },
-  ],
-};
 
 let options = {
   responsive: false,
@@ -79,31 +40,91 @@ let options = {
 };
 
 function HomePage() {
+  const { darkMode } = useMenu();
+
+  const darkBgColors = ["#d2d0ff", "#f7d356", "#a4a6ff", "#4caf81", "#f8a877"];
+  const backColorColors = [
+    "#babbff",
+    "#f4c111",
+    "#7879ff",
+    "#25a65b",
+    "#f48b53",
+  ];
+
+  let chartData = {
+    labels,
+    datasets: [
+      {
+        data: quantities,
+        backgroundColor: darkMode ? darkBgColors : backColorColors,
+      },
+    ],
+  };
+
+  let pieOptions = {
+    responsive: false,
+    animation: true,
+    plugins: {
+      legend: {
+        display: true,
+        position: "right",
+        labels: {
+          font: {
+            size: 16,
+            family: ["quicksand", "Arial"],
+            weight: "bold",
+          },
+          color: darkMode ? "white" : "black",
+        },
+      },
+      title: {
+        display: false,
+      },
+    },
+  };
+
+  const darkPieBgColors = ["#a0a2ff", "#6ed5da", "#dcdcff", "#f9dd6a"];
+  const lightPieBgColors = ["#7779ff", "#2ec7cc", "#babbff", "#f4c211"];
+
+  let pieData = {
+    labels: labelsPie,
+    datasets: [
+      {
+        label: "Equipos reparados",
+        data: quantitiesPie,
+        backgroundColor: darkMode ? darkPieBgColors : lightPieBgColors,
+        borderColor: ["#7779ff", "#2ec7cc", "#babbff", "#f4c211"],
+      },
+    ],
+  };
+
   return (
     <>
-      <div className="Home">
-        <section className="CardContainer">
+      <div className="dark:text-white">
+        <section className="CardContainer bg-[#f5f5f5] shadow-container dark:shadow-none dark:bg-[#222222]">
           <Card
-            type="Danger"
-            icon={DangerIcon}
+            backColor="bg-danger dark:bg-dark-danger"
+            lightColors={["#ffd699", "#fdeac0"]}
+            darkColors={["#b38f66", "#e0b189"]}
+            icon={darkMode ? DarkDangerIcon : DangerIcon}
             title="Reparaciones pendientes"
             info="25"
           />
           <Card
-            type="Ready"
-            icon={ReadyIcon}
+            backColor="bg-ready dark:bg-dark-ready"
+            icon={darkMode ? DarkReadyIcon : ReadyIcon}
             title="Equipos listos para entregar"
             info="15"
           />
           <Card
-            type="Repair"
-            icon={ToolBoxIcon}
+            backColor="bg-repair dark:bg-dark-repair"
+            icon={darkMode ? DarkToolBoxIcon : ToolBoxIcon}
             title="Equipos reparados hoy"
             info="17"
           />
           <Card
-            type="Money"
-            icon={DollarIcon}
+            backColor="bg-money dark:bg-dark-money"
+            icon={darkMode ? DarkMoneyIcon : MoneyIcon}
             title="Total de ingresos hoy"
             info="$150k"
           />
@@ -114,7 +135,7 @@ function HomePage() {
               data={chartData}
               options={options}
               type="bar"
-              color="#f7e8d9"
+              color="bg-[#f7e8d9] dark:bg-[#263238]"
               info={(() => {
                 let total = 0;
                 quantities.forEach((quantitie) => {
@@ -128,7 +149,7 @@ function HomePage() {
               data={pieData}
               type="pie"
               options={pieOptions}
-              color="#E6E6FA"
+              color="bg-[#E6E6FA] dark:bg-[#37474f]"
             />
           </div>
         </section>
@@ -136,8 +157,8 @@ function HomePage() {
         <div className="GroupButtons">
           <MenuButton icon={ReportIcon} />
           <MenuButton icon={EmployeeIcon} />
-          <MenuButton icon={AddIcon} addButton={true} />
-          <MenuButton icon={RepairIcon} />
+          <MenuButton icon={AddIcon} addButton="AddButton" />
+          <MenuButton icon={RepairIconButton} />
           <MenuButton icon={BarsDiagramIcon} />
         </div>
       </div>

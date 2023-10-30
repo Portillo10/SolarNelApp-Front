@@ -1,20 +1,18 @@
-import { useContext } from "react";
-import { RepairsContext } from "../Contexts/RepairsContext";
+import { useRepair } from "../hooks/UseRepair";
 
-function RepairBox({ children }) {
+function RepairBox() {
   const {
     loadCards,
     receivedDevices,
     repairedDevices,
     deliveredDevices,
-    clickScroll,
     scroll,
-  } = useContext(RepairsContext);
+  } = useRepair();
 
   return (
     <>
       <section className="RepairBox">
-        <div className="Slider" onMouseDown={clickScroll} onScroll={scroll}>
+        <div className="Slider" onScroll={scroll}>
           <section className="CardRepairsBox">
             {loadCards(receivedDevices)}
           </section>

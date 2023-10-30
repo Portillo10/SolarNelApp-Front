@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import { RepairsContext } from "../Contexts/RepairsContext.jsx";
+import { useRepair } from "../hooks/UseRepair";
 
 function HeaderRepairPage() {
-  const { currentScrollIndex } = useContext(RepairsContext);
+  const { currentScrollIndex } = useRepair();
   const scroll = (index) => {
     const slider = document.getElementsByClassName("Slider")[0];
 
@@ -33,30 +32,30 @@ function HeaderRepairPage() {
   return (
     <>
       <div className="RepairHeader " style={{ backgroundColor: "#B7ADAD" }}>
-        <a
+        <p
           onClick={() => scroll(0)}
           className={`cursor-pointer ${
             currentScrollIndex == 0 ? "ActiveRepairFilter" : ""
           }`}
         >
           Recibidos
-        </a>
-        <a
+        </p>
+        <p
           onClick={() => scroll(1)}
           className={`cursor-pointer ${
             currentScrollIndex == 1 ? "ActiveRepairFilter" : ""
           }`}
         >
           Reparados
-        </a>
-        <a
+        </p>
+        <p
           onClick={() => scroll(2)}
           className={`cursor-pointer ${
             currentScrollIndex == 2 ? "ActiveRepairFilter" : ""
           }`}
         >
           Entregados
-        </a>
+        </p>
       </div>
     </>
   );

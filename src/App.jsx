@@ -1,20 +1,32 @@
 import { useRoutes, BrowserRouter } from "react-router-dom";
 
-//components
-import LateralMenu from "./components/LateralMenu";
-
-//Icons
-
 //Pages
 import RepairPage from "./pages/RepairPage";
 import HomePage from "./pages/HomePage";
-import MainHeader from "./components/MainHeader";
+import BasePage from "./pages/BasePage";
+import LoginPage from "./pages/LoginPage";
+
 import { MenuProvider } from "./Contexts/MenuContext";
 
 const AppRoutes = () => {
   let routes = useRoutes([
-    { path: "/", element: <HomePage /> },
-    { path: "/repairs", element: <RepairPage /> },
+    {
+      path: "/",
+      element: (
+        <BasePage>
+          <HomePage />
+        </BasePage>
+      ),
+    },
+    {
+      path: "/repairs",
+      element: (
+        <BasePage>
+          <RepairPage />
+        </BasePage>
+      ),
+    },
+    { path: "/login", element: <LoginPage /> },
     { path: "*", element: <></> },
   ]);
 
@@ -26,13 +38,7 @@ function App() {
     <>
       <BrowserRouter>
         <MenuProvider>
-          <LateralMenu />
-          <div className="MainPage">
-            <MainHeader />
-            <div className="flex w-full gap-5">
-              <AppRoutes />
-            </div>
-          </div>
+          <AppRoutes />
         </MenuProvider>
       </BrowserRouter>
     </>

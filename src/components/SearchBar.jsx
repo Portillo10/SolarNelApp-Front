@@ -1,9 +1,8 @@
-import searchIcon from "../assets/svg/Search_icon.svg";
-import { useContext } from "react";
-import { RepairsContext } from "../Contexts/RepairsContext";
+import { searchIcon } from "../hooks/Icons.jsx";
+import { useRepair } from "../hooks/UseRepair";
 
 function SearchBar() {
-  const { setSearch } = useContext(RepairsContext);
+  const { setSearch } = useRepair();
 
   const textChange = (e) => {
     setSearch(e.target.value);

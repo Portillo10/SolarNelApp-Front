@@ -133,8 +133,8 @@ const STATES_ENUM = {
 export const RepairsProvider = ({ children }) => {
   const [currentScrollIndex, setScrollIndex] = useState(0);
   const [search, setSearch] = useState("");
-  const [showDeviceInfo, setShowDeviceInfo] = useState(false);
-  const [currentDevice, setCurrentDevice] = useState({});
+  const [currentRepair, setCurrentRepair] = useState(null);
+  const [currentDevice, setCurrentDevice] = useState(null);
 
   const spinner = (
     <div
@@ -154,24 +154,6 @@ export const RepairsProvider = ({ children }) => {
     } else {
       setScrollIndex(0);
     }
-  };
-
-  const clickScroll = (e) => {
-    const startClick = e.clientX;
-    const slider = document.getElementsByClassName("Slider")[0];
-
-    const mouseMove = (e) => {
-      const deltaX = startClick - e.clientX;
-      slider.scrollBy({ left: deltaX, behavior: "smooth" });
-    };
-
-    const mouseUp = (e) => {
-      document.removeEventListener("mousemove", mouseMove);
-      document.removeEventListener("mouseup", mouseUp);
-    };
-
-    document.addEventListener("mousemove", mouseMove);
-    document.addEventListener("mouseup", mouseUp);
   };
 
   const diagnosticToString = (diagnostic) => {
@@ -217,7 +199,7 @@ export const RepairsProvider = ({ children }) => {
       <CardRepair key={i} device={device}>
         <div className="flex text-green-700 ">
           <img src={dollarIcon} width={20} alt="" />
-          <p className="text-lg">{device.price}</p>
+          <p className="text-lg font-extrabold">{device.price}</p>
         </div>
       </CardRepair>
     ));
@@ -239,7 +221,7 @@ export const RepairsProvider = ({ children }) => {
   const loadCards = (cardList = []) => {
     if (cardList.length == 0) return spinner;
     if (search == "") return cardList;
-    return cardList.filter(({ props: { device } }) => {
+    const cards = cardList.filter(({ props: { device } }) => {
       if (
         removeAccents(device.customerName)
           .toLowerCase()
@@ -250,11 +232,20 @@ export const RepairsProvider = ({ children }) => {
           removeAccents(device.deviceBrand)
         )
           .toLowerCase()
-          .includes(removeAccents(search.toLowerCase()))
+          .includes(removeAccents(search.toLowerCase())) ||
+        device.deviceID.toString().includes(search)
       ) {
         return true;
       }
     });
+
+    if (cards.length == 0)
+      return (
+        <p className="text-xl text-center font-bold py-4">
+          No se encontraron resultados
+        </p>
+      );
+    return cards;
   };
 
   return (
@@ -269,11 +260,11 @@ export const RepairsProvider = ({ children }) => {
         repairedDevices,
         deliveredDevices,
         scroll,
-        clickScroll,
-        showDeviceInfo,
-        setShowDeviceInfo,
         currentDevice,
         setCurrentDevice,
+        currentRepair,
+        setCurrentRepair,
+        spinner,
       }}
     >
       {children}

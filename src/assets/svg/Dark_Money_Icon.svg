@@ -1,0 +1,11 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+	<title>Money_Icon-svg</title>
+	<defs>
+		<image  width="128" height="128" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAQMAAAD58POIAAAAAXNSR0IB2cksfwAAAAZQTFRFAAAA////pdmf3QAAAAJ0Uk5TAP9bkSK1AAABiUlEQVR4nM2WTW7EIAyFQSxYcgSOkqORo+UoOcIssxiFAsY28CK1qqZSkUaafCH2i/FPjGnL5XyYceWyxmtfwTmAVMFbr23O8zOegD4TCVyziZzvxUTOuxFVtFhbYPCabaqSxICtZlmLTXZDb+bVTSCRUdxE2mtF/NbNJ/ab+tbAftmY636t+O9+nShMtNVJZCIBL28ZKIpB4uDoVpRIWXo4avwJbBrc1KQmPTK6l/Q8YgMa2+qwgZOBr8AOqeKqAqsHRv/dDI4KjKwKvOqqEk4EYcytrWgKQ+IUqa/ym8DVoKzwBLYxgwH44vIBHApcAWkGdwG7Avs7MNVaCdkMzKfAPYL0n8GfvP4a5E+cXFrzAxLmJzk2gMfEfQBLNUB5QAF9X3NQplDIUOrQDKBdYEOBljM1pbd5aFvQ2KD1BfHb+ya0T2iwUwveyRRZlW69tvG68+om7i54GQUwLGCcwMCBkQRDC8faxoBjCaPRM+hxwfEKAxhHNAxxu5joSoZcw08F+JioW/qGL6R1tq7p4GQfAAAAAElFTkSuQmCC"/>
+		<image  width="59" height="88" id="img2" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADsAAABYAQMAAABxix0EAAAAAXNSR0IB2cksfwAAAAZQTFRFAAAA////pdmf3QAAAAJ0Uk5TAP9bkSK1AAAA3klEQVR4nK3SQQ6DIBAFUEwXLj0CR+FokHgxEi9i4gVIuihJDVNmhq/Upjvd+BIYnD9ijHlQMvLchZGywhMFXSFdmyp2hqugtkU38ZuiMYNg1SIpGwVZq6X+gBWUDnzwi492tNFTsVBieJop+foxT48O7gdWMAOL9u7rgQm9/4FFLNt611aLQYoA9AEHxNFp7JhPQT0fOQC6FtpYT8RvpAOugorkWi+YKiRyh6jZD9gKmaETbDw6xpvHG9rkT6BlQtIC7IickSbjvyfEiphdaNkL7o9eKZ2cbrr30l7wAVNmit0eRzFMAAAAAElFTkSuQmCC"/>
+	</defs>
+	<style>
+	</style>
+	<use id="Layer" href="#img1" x="0" y="0"/>
+	<use id="Layer" href="#img2" x="34" y="20"/>
+</svg>

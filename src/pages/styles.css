@@ -1,0 +1,17 @@
+input:focus ~ label {
+  top: 0;
+  font-size: 14px;
+  color: #3866f2;
+}
+
+input:not(:placeholder-shown) + label {
+  top: 0;
+  font-size: 14px;
+  color: #3866f2;
+}
+
+label {
+  transition: 0.2s;
+  left: 10px;
+  pointer-events: none;
+}
