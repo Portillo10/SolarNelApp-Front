@@ -1,5 +1,6 @@
-import { CheckIcon, DollarIcon } from "../hooks/Icons";
+import { CheckIcon } from "../hooks/Icons";
 import { useRepair } from "../hooks/UseRepair";
+import {AttachMoneyRounded} from '@mui/icons-material'
 
 function RepairInfoCard({ repair }) {
   const { setCurrentRepair } = useRepair();
@@ -58,9 +59,9 @@ function RepairInfoCard({ repair }) {
             {renderReplacements()}
           </div>
 
-          <span className="flex">
-            <img src={DollarIcon} width="16px" alt="" />{" "}
-            <p className="text-green-700 text-sm font-extrabold">120.000</p>
+          <span className="flex text-green-700 items-center">
+            <AttachMoneyRounded sx={{fontSize:18}}/>
+            <p className=" text-sm font-extrabold">120.000</p>
           </span>
         </section>
         <section className="flex justify-center">

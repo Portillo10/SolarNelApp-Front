@@ -3,36 +3,45 @@ import { createContext, useEffect, useState } from "react";
 export const MenuContext = createContext();
 
 export const MenuProvider = ({ children }) => {
+  const startTheme = () => {
+    const theme = JSON.parse(localStorage.getItem("theme"));
+    if (theme == null) {
+      return window.matchMedia("(prefers-color-scheme:dark)").matches;
+    } else {
+      return theme;
+    }
+  };
+
   const [activeMenu, setActiveMenu] = useState(false);
   const [menuAnimationFinished, setMenuAnimationFinished] = useState(true);
-  const [darkMode, setDarkMode] = useState(
-    window.matchMedia("(prefers-color-scheme:dark)").matches
-  );
+  const [darkMode, setDarkMode] = useState(startTheme());
 
   const handleTheme = () => {
-    setDarkMode(!darkMode);
+    setDarkMode(prev => {
+      localStorage.setItem("theme", JSON.stringify(!prev));
+      return !prev
+    });
   };
 
   const handleStyleMenuItem = () => {
     setActiveMenu(!activeMenu);
     setMenuAnimationFinished(false);
-
     setTimeout(() => {
-      setMenuAnimationFinished(true);
-    }, 300);
+      setMenuAnimationFinished(true)
+    }, 150);
   };
 
   const hideMenu = () => {
-    if (activeMenu) {
+    if (activeMenu && menuAnimationFinished) {
       handleStyleMenuItem();
     }
   };
 
   useEffect(() => {
-    if (darkMode) {
-      document.querySelector("html").classList.add("dark");
-    } else {
+    if (darkMode == false) {
       document.querySelector("html").classList.remove("dark");
+    } else if (darkMode == true) {
+      document.querySelector("html").classList.add("dark");
     }
   }, [darkMode]);
 
@@ -51,9 +60,9 @@ export const MenuProvider = ({ children }) => {
         handleStyleMenuItem,
         activeMenu,
         hideMenu,
-        menuAnimationFinished,
         darkMode,
         handleTheme,
+        menuAnimationFinished
       }}
     >
       {children}

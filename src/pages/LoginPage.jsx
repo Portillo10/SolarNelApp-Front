@@ -1,13 +1,17 @@
 import Logo from "/svg/Logos/normal_logo.svg";
 import DarkLogo from "/svg/Logos/dark_normal_logo.svg";
+import {useMenu} from '../hooks/UseMenu'
 
 import "./styles.css";
 
 export default function LoginPage() {
+
+  const {darkMode} = useMenu()
+
   return (
     <>
       <div className="h-screen w-screen flex flex-col items-center justify-start relative bg-[#F0F3F8] dark:bg-[#0f0f0f]">
-        <img className="-mt-6" width="320px" src={Logo} alt="" />
+        <img className="-mt-6" width="320px" src={darkMode?DarkLogo:Logo} alt="" />
         <div
           id="LoginFormContainer"
           className="max-w-[80%] w-auto pb-8 pt-12 px-12 flex flex-col items-center gap-8 rounded-lg absolute top-1/2 -translate-y-1/2 bg-[#f5f5f5] shadow-login dark:bg-[#222222] dark:shadow-none dark:text-white"

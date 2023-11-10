@@ -31,11 +31,11 @@ function HeaderRepairPage() {
 
   return (
     <>
-      <div className="RepairHeader " style={{ backgroundColor: "#B7ADAD" }}>
+      <div className="RepairHeader bg-[#B7ADAD] dark:bg-[#5e5a5f] dark:text-[#d8d1d1]">
         <p
           onClick={() => scroll(0)}
           className={`cursor-pointer ${
-            currentScrollIndex == 0 ? "ActiveRepairFilter" : ""
+            currentScrollIndex == 0 ? "text-[#004080] border-b-4 border-[#004080] pb-[39px] dark:text-[#3ca4ff] dark:border-[#3ca4ff]" : ""
           }`}
         >
           Recibidos
@@ -43,7 +43,7 @@ function HeaderRepairPage() {
         <p
           onClick={() => scroll(1)}
           className={`cursor-pointer ${
-            currentScrollIndex == 1 ? "ActiveRepairFilter" : ""
+            currentScrollIndex == 1 ? "text-[#004080] border-b-4 border-[#004080] pb-[39px] dark:text-[#3ca4ff] dark:border-[#3ca4ff]" : ""
           }`}
         >
           Reparados
@@ -51,7 +51,7 @@ function HeaderRepairPage() {
         <p
           onClick={() => scroll(2)}
           className={`cursor-pointer ${
-            currentScrollIndex == 2 ? "ActiveRepairFilter" : ""
+            currentScrollIndex == 2 ? "text-[#004080] border-b-4 border-[#004080] pb-[39px] dark:text-[#3ca4ff] dark:border-[#3ca4ff]" : ""
           }`}
         >
           Entregados

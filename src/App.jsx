@@ -5,8 +5,10 @@ import RepairPage from "./pages/RepairPage";
 import HomePage from "./pages/HomePage";
 import BasePage from "./pages/BasePage";
 import LoginPage from "./pages/LoginPage";
+import QrScanPage from "./pages/QrScanPage";
 
 import { MenuProvider } from "./Contexts/MenuContext";
+import { RepairsProvider } from "./Contexts/RepairsContext.jsx";
 
 const AppRoutes = () => {
   let routes = useRoutes([
@@ -27,6 +29,10 @@ const AppRoutes = () => {
       ),
     },
     { path: "/login", element: <LoginPage /> },
+    {
+      path: "/qr_scanner",
+      element: <QrScanPage />,
+    },
     { path: "*", element: <></> },
   ]);
 
@@ -38,7 +44,9 @@ function App() {
     <>
       <BrowserRouter>
         <MenuProvider>
-          <AppRoutes />
+          <RepairsProvider>
+            <AppRoutes />
+          </RepairsProvider>
         </MenuProvider>
       </BrowserRouter>
     </>

@@ -1,75 +1,82 @@
 import MenuItem from "./MenuItem.jsx";
-
 import {
-  ArrowIcon,
-  BarsDiagramIcon,
-  BarsDiagramIconBlack,
-  ConfigIcon,
-  HomeIcon,
-  InventoryIcon,
-  MenuIcon,
-  OffIcon,
-  ProfileIcon,
-  RepairIcon,
-  ReportActivityIcon,
-  UsersIcon,
-  QRCodeIcon,
-} from "../hooks/Icons.jsx";
+  Menu,
+  Home,
+  AccountCircle,
+  Handyman,
+  Assignment,
+  LeaderboardRounded,
+  PeopleAlt,
+  ArrowForwardIosRounded,
+  QrCodeRounded,
+  InventorySharp,
+  Settings,
+  PowerSettingsNewRounded,
+} from "@mui/icons-material";
 
 import { useContext } from "react";
 import { MenuContext } from "../Contexts/MenuContext";
 
 function LateralMenu() {
-  const { handleStyleMenuItem, activeMenu, darkMode } = useContext(MenuContext);
+  const { handleStyleMenuItem, activeMenu } = useContext(MenuContext);
+
+  const sxObj = {
+    fontSize: 30,
+  };
 
   return (
     <>
       <nav
-        className={`LateralMenu ${
-          activeMenu ? "ShownMenu" : ""
-        } dark:bg-[#0f0f0f]`}
+        className={`LateralMenu bg-[#f0f3f8] ${
+          activeMenu ? "desktop:w-[300px] w-[270px]" : "desktop:w-[50px] w-0"
+        } dark:bg-dark-container dark:text-white dark:shadow-none`}
       >
-        <ul>
-          <MenuItem
-            event={handleStyleMenuItem}
-            route={undefined}
-            icon={MenuIcon}
-          ></MenuItem>
-          <MenuItem icon={HomeIcon} route="/">
+        <ul >
+          <MenuItem event={handleStyleMenuItem} route={undefined}>
+            <Menu sx={sxObj} />
+          </MenuItem>
+          <MenuItem route="/">
+            <Home sx={sxObj} />
             <p>Inicio</p>
           </MenuItem>
-          <MenuItem icon={ProfileIcon} route="/profile">
+          <MenuItem route="/profile">
+            <AccountCircle sx={sxObj} />
             <p>Mi Perfil</p>
           </MenuItem>
-          <MenuItem icon={RepairIcon} route="/repairs">
+          <MenuItem route="/repairs">
+            <Handyman sx={sxObj} />
             <p>Reparaciones</p>
           </MenuItem>
-          <MenuItem icon={ReportActivityIcon} route="/reportactivity">
+          <MenuItem route="/reportactivity">
+            <Assignment sx={sxObj} />
             <p>Registro de actividad</p>
           </MenuItem>
-          <MenuItem
-            icon={darkMode ? BarsDiagramIcon : BarsDiagramIconBlack}
-            route="/stadistics"
-          >
+          <MenuItem route="/stadistics">
+            <LeaderboardRounded sx={sxObj} />
             <p>Consultar estadísticas</p>
           </MenuItem>
-          <MenuItem icon={UsersIcon} route="/users">
+          <MenuItem route="/users">
+            <PeopleAlt sx={sxObj} />
             <p>Cuentas de usuario</p>
-            <img src={ArrowIcon} alt="" />
+            <ArrowForwardIosRounded />
           </MenuItem>
-          <MenuItem icon={QRCodeIcon} route="/qrcodes">
+          <MenuItem route="/qrcodes">
+            <QrCodeRounded sx={sxObj} />
             <p>Generar códigos</p>
-            <img src={ArrowIcon} alt="" />
+            <ArrowForwardIosRounded />
           </MenuItem>
-          <MenuItem icon={InventoryIcon} route="/replacements">
+          <MenuItem route="/replacements">
+            <InventorySharp sx={sxObj} />
             <p>Repuestos</p>
           </MenuItem>
-          <MenuItem icon={ConfigIcon} route="/settings">
+          <MenuItem route="/settings">
+            <Settings sx={sxObj} />
             <p>Configuración</p>
           </MenuItem>
         </ul>
         <ul>
-          <MenuItem icon={OffIcon} route="/login">
+          <MenuItem route="/login">
+            <PowerSettingsNewRounded color="error" sx={sxObj} />
             <p>Cerrar sesion</p>
           </MenuItem>
         </ul>

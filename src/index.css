@@ -50,11 +50,11 @@ body::-webkit-scrollbar-thumb {
   justify-content: space-between;
   margin-bottom: 10px;
   width: 100%;
+  align-items: center;
 }
 
 .LateralMenuIcon:hover {
   cursor: pointer;
-  background-color: #b0c4de;
 }
 
 .LateralMenuIcon {
@@ -64,8 +64,7 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   gap: 20px;
   border: none;
-  flex-direction: row-reverse;
-  background-color: transparent;
+  flex-wrap: nowrap;
 }
 
 .LateralMenuLi {
@@ -73,37 +72,24 @@ body::-webkit-scrollbar-thumb {
   align-items: center;
   display: flex;
   border: none;
-  flex-direction: row-reverse;
-  background-color: transparent;
 }
 
-.LateralMenuIcon div {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.ShownMenuIcon {
-  flex-direction: row;
-}
-
-.LateralMenuIcon div p {
+.LateralMenuIcon p {
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .LateralMenu {
   display: flex;
   flex-direction: column;
   box-shadow: 0px 0px 6px rgb(87, 86, 86);
-  align-items: center;
   justify-content: space-between;
-  height: 100%;
+  height: 100vh;
   z-index: 1;
-  transition: all 300ms ease;
-  width: 310px;
-  position: fixed;
-  left: -260px;
-  overflow: auto;
+  transition: all 0.15s ease-in-out;
+  position: absolute;
+  overflow: hidden;
+  left: 0;
 }
 
 .LateralMenu::-webkit-scrollbar {
@@ -199,16 +185,15 @@ body::-webkit-scrollbar-thumb {
   padding: 20px;
   justify-content: center;
   gap: 10px;
-  overflow: hidden;
   margin-bottom: 80px;
   flex-wrap: wrap;
   max-height: calc(100vh - 200px);
-  overflow-y: auto;
 }
 
-.CardContainer::-webkit-scrollbar-thumb:hover {
-  background-color: #2980b9;
+.CardContainer::-webkit-scrollbar{
+  display: none;
 }
+
 .ChartContainer h4 {
   font-weight: 700;
 }
@@ -238,10 +223,11 @@ body::-webkit-scrollbar-thumb {
 }
 
 .MainPage {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px 16px;
+  padding: 0 16px 10px 16px;
   overflow: hidden;
   height: 100vh;
 }
@@ -269,24 +255,18 @@ body::-webkit-scrollbar-thumb {
     height: 72px;
   }
   .TopMenuIcon {
-    display: none;
-  }
-  .Head {
-    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
   }
   .GroupButtons {
     margin-left: 25px;
   }
   .MainPage {
-    margin-left: 50px;
+    padding-left: 66px;
   }
 }
 
 @media screen and (max-width: 679px) {
-  .LateralMenu {
-    left: -260px;
-    width: 260px;
-  }
   .LateralMenu p {
     font-size: 16px;
   }
@@ -322,13 +302,11 @@ body::-webkit-scrollbar-thumb {
 .RepairPage {
   position: relative;
   display: flex;
-  background-color: #f5f5f5;
   box-shadow: 0px 4px 10px rgb(61, 61, 61);
   flex-direction: row;
   border-radius: 20px;
   max-height: calc(100vh - 120px);
   width: 100%;
-  transition: all 0.25s ease;
   max-width: 1020px;
 }
 
@@ -350,16 +328,9 @@ body::-webkit-scrollbar-thumb {
   user-select: none;
 }
 
-.ActiveRepairFilter {
-  color: #004080;
-  border-bottom: 4px solid #004080;
-  padding-bottom: 39px;
-}
-
 .RepairBox {
   display: flex;
-  height: calc(100% - 130px);
-  overflow: auto;
+  max-height: calc(100vh - 250px);
   border-radius: 20px;
 }
 

@@ -3,20 +3,18 @@ import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { MenuContext } from "../Contexts/MenuContext";
 
-function MenuItem({ icon, children, event, route }) {
-  const { hideMenu, activeMenu, menuAnimationFinished } =
+function MenuItem({ children, event, route }) {
+  const { hideMenu, menuAnimationFinished } =
     useContext(MenuContext);
 
   return (
     <>
-      <li onClick={event ? event : hideMenu} className="LateralMenuLi">
+      <li onClick={event ? event : hideMenu} className={`LateralMenuLi transition-all`}>
         <NavLink
-          className={`LateralMenuIcon ${activeMenu ? "ShownMenuIcon" : ""} ${
-            menuAnimationFinished ? "opacity-100" : "opacity-0"
-          }`}
+          className={`LateralMenuIcon transition-all duration-300 hover:bg-[#b0bec5] dark:hover:bg-[#3498db]`}
           to={route}
         >
-          <img src={icon} alt="" /> <div>{children}</div>
+          {children}
         </NavLink>
       </li>
     </>

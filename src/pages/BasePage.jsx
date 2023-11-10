@@ -1,15 +1,34 @@
+import { useState } from "react";
 import LateralMenu from "../components/LateralMenu";
 import MainHeader from "../components/MainHeader";
 import { useMenu } from "../hooks/UseMenu";
+import { useEffect } from "react";
 
 function BasePage({ children }) {
-  const { darkMode } = useMenu();
+  const [menuOpenCount, setMenuOpenCount] = useState(0);
+  const { menuAnimationFinished } = useMenu();
+
+  useEffect(() => {
+    if (menuOpenCount > 0) return;
+    if (menuAnimationFinished) {
+      setMenuOpenCount(1);
+    }
+  }, [menuAnimationFinished]);
+
   return (
     <>
-      <LateralMenu />
-      <div className={`MainPage ${darkMode ? "bg-[#0f0f0f]" : ""}`}>
+      <div className="MainPage bg-[#f0f3f8] dark:bg-[#222222]">
+        <LateralMenu />
         <MainHeader />
-        <div className="flex justify-center w-full gap-4">{children}</div>
+          <div className="flex justify-center w-full gap-4">
+            {menuOpenCount == 0 && !menuAnimationFinished ? (
+              spinner
+            ) : menuOpenCount > 0 || menuAnimationFinished ? (
+              children
+            ) : (
+              <></>
+            )}
+          </div>
       </div>
     </>
   );

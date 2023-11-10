@@ -1,5 +1,6 @@
 import { useRepair } from "../hooks/UseRepair";
-import { CloseIcon, DollarIcon } from "../hooks/Icons";
+import { CloseIcon } from "../hooks/Icons";
+import { AttachMoneyRounded } from "@mui/icons-material";
 
 const vocals = ["a", "e", "i", "o", "u"];
 
@@ -36,7 +37,6 @@ function RepairDetailPage() {
     return sum;
   };
 
-  // if (!currentRepair) return <></>;
   return (
     <>
       <div
@@ -45,7 +45,7 @@ function RepairDetailPage() {
             ? "translate(50%, 0)"
             : "translate(50%, calc(100% + 50px))",
         }}
-        className="transition-all ease-out absolute max-w-[500px] w-full bg-[#FFE4B5] right-1/2  rounded-[20px] h-[calc(100vh-120px)] border-2 border-[#b29f7e]"
+        className="transition-all ease-out absolute max-w-[500px] w-full bg-[#FFE4B5] right-1/2 rounded-[20px] h-[calc(100vh-120px)] border-2 border-[#b29f7e]"
       >
         <img
           onClick={() => setCurrentRepair(null)}
@@ -96,9 +96,9 @@ function RepairDetailPage() {
                       : ""
                   }`}
                 </p>
-                <span className="flex items-center">
-                  <img src={DollarIcon} width={18} alt="" />{" "}
-                  <p className="text-lg font-bold text-[#006400] ">
+                <span className="flex text-[#006400] items-center">
+                  <AttachMoneyRounded fontSize="small"/>
+                  <p className="text-lg font-bold">
                     {replacement.price * replacement.quantity}
                   </p>
                 </span>
@@ -106,11 +106,9 @@ function RepairDetailPage() {
             ))}
             <span className="flex justify-between py-1">
               <p className="text-lg font-bold">Total</p>
-              <span className="flex">
-                <img src={DollarIcon} width={18} alt="" />{" "}
-                <p className="text-lg font-bold text-[#006400]">
-                  {calcTotalPrice()}
-                </p>
+              <span className="flex text-[#006400] items-center">
+                <AttachMoneyRounded sx={{ fontSize: 22 }} />
+                <p className="text-lg font-bold ">{calcTotalPrice()}</p>
               </span>
             </span>
           </section>

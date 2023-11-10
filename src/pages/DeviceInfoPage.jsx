@@ -1,13 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 
+import {ExpandMore, Person, Call, Tune, ModeRounded} from '@mui/icons-material'
+
 //icons
 import {
   CloseIcon,
-  EditIcon,
-  CustomerIcon,
-  PhoneIcon,
-  ArrowIcon,
-  FilterIcon,
 } from "../hooks/Icons";
 
 //components
@@ -301,12 +298,7 @@ function DeviceInfoPage() {
               <h3 className="mb-3 text-[16px] font-bold">
                 Características técnicas
               </h3>
-              <img
-                className="-mt-2 -mr-[2px] p-[1px] border-[#8D8989] border-[1px] rounded-lg"
-                src={EditIcon}
-                width={26}
-                alt=""
-              />
+              <ModeRounded className="p-[1px] border-[#8D8989] border-[1px] rounded-lg -mt-2" fontSize="small"/>
             </span>
 
             <table className="w-full rounded-lg border-1 border-gray-500 mb-2">
@@ -342,21 +334,16 @@ function DeviceInfoPage() {
               <h3 className="mb-3 text-[16px] font-bold">
                 Información del cliente
               </h3>
-              <img
-                className="-mt-2 -mr-[2px] p-[1px] border-[#8D8989] border-[1px] rounded-lg"
-                src={EditIcon}
-                width={26}
-                alt=""
-              />
+              <ModeRounded className="p-[1px] border-[#8D8989] border-[1px] rounded-lg border-gray-600 -mt-2" fontSize="small"/>
             </span>
-            <span className="flex gap-1 px-2 mb-2">
-              <img src={CustomerIcon} width={20} alt="" />
+            <span className="flex gap-1 px-2 mb-2 items-center">
+              <Person/>
               <p className="text-[15px] font-bold">
                 {currentDevice ? currentDevice.customerName : ""}
               </p>
             </span>
-            <span className="flex gap-1 px-2 mb-2">
-              <img src={PhoneIcon} width={20} alt="" />
+            <span className="flex gap-1 px-2 mb-2 items-center">
+              <Call/>
               <p className="text-[15px] font-bold">
                 {currentDevice ? currentDevice.customerPhone : ""}
               </p>
@@ -369,9 +356,9 @@ function DeviceInfoPage() {
               <h3 className="mb-2 text-[16px] font-bold">
                 Historial de reparaciones
               </h3>
-              <span className="flex gap-1 -mt-1">
-                <p className="text-sm font-bold">Filtros</p>{" "}
-                <img src={FilterIcon} width={16} alt="" />
+              <span className="flex gap-1 -mt-1 items-center">
+                <p className="text-sm font-bold">Filtros</p>
+                <Tune fontSize="small"/>
               </span>
             </span>
             <div
@@ -401,14 +388,7 @@ function DeviceInfoPage() {
                 <p className="text-center text-lg font-bold hover:cursor-pointer">
                   {` ${shownHistorial ? "Ocultar" : "Ver historial completo"}`}
                 </p>
-                <img
-                  className={`transition-all ${
-                    shownHistorial ? "-rotate-90" : "rotate-90"
-                  } hover:cursor-pointer`}
-                  width="32px"
-                  src={ArrowIcon}
-                  alt=""
-                />
+                <ExpandMore className={`${shownHistorial?"rotate-180":""}`} sx={{fontSize:32, cursor:"pointer"}}/>
               </span>
             ) : (
               <></>

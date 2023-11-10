@@ -1,5 +1,6 @@
 import { searchIcon } from "../hooks/Icons.jsx";
 import { useRepair } from "../hooks/UseRepair";
+import { SearchRounded} from '@mui/icons-material'
 
 function SearchBar() {
   const { setSearch } = useRepair();
@@ -10,9 +11,9 @@ function SearchBar() {
 
   return (
     <>
-      <div className="SearchBar">
-        <input type="text" onChange={textChange} />
-        <img src={searchIcon} alt="" width="36px" />
+      <div className="SearchBar dark:bg-[#484848] dark:text-white">
+        <input className="bg-transparent " type="text" onChange={textChange} />
+        <SearchRounded sx={{fontSize:36}}/>
       </div>
     </>
   );

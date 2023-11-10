@@ -40,7 +40,7 @@ let options = {
 };
 
 function HomePage() {
-  const { darkMode } = useMenu();
+  const { darkMode, menuAnimationFinished } = useMenu();
 
   const darkBgColors = ["#d2d0ff", "#f7d356", "#a4a6ff", "#4caf81", "#f8a877"];
   const backColorColors = [
@@ -101,7 +101,7 @@ function HomePage() {
   return (
     <>
       <div className="dark:text-white">
-        <section className="CardContainer bg-[#f5f5f5] shadow-container dark:shadow-none dark:bg-[#222222]">
+        <section className={`CardContainer bg-[#f5f5f5] shadow-container dark:shadow-none dark:bg-dark-container ${menuAnimationFinished?"overflow-auto":"overflow-hidden"}`}>
           <Card
             backColor="bg-danger dark:bg-dark-danger"
             lightColors={["#ffd699", "#fdeac0"]}
