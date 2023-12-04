@@ -1,4 +1,4 @@
-import { useRoutes, BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 //Pages
 import RepairPage from "./pages/RepairPage";
@@ -6,48 +6,56 @@ import HomePage from "./pages/HomePage";
 import BasePage from "./pages/BasePage";
 import LoginPage from "./pages/LoginPage";
 import QrScanPage from "./pages/QrScanPage";
+import AddDevicePage from "./pages/AddDevicePage.jsx";
+import RepairFormPage from './pages/RepairFormPage.jsx'
 
+//Providers
 import { MenuProvider } from "./Contexts/MenuContext";
 import { RepairsProvider } from "./Contexts/RepairsContext.jsx";
-
-const AppRoutes = () => {
-  let routes = useRoutes([
-    {
-      path: "/",
-      element: (
-        <BasePage>
-          <HomePage />
-        </BasePage>
-      ),
-    },
-    {
-      path: "/repairs",
-      element: (
-        <BasePage>
-          <RepairPage />
-        </BasePage>
-      ),
-    },
-    { path: "/login", element: <LoginPage /> },
-    {
-      path: "/qr_scanner",
-      element: <QrScanPage />,
-    },
-    { path: "*", element: <></> },
-  ]);
-
-  return routes;
-};
+import { ProtectedRoute } from "./ProtectedRoute.jsx";
+import { AuthProvider } from "./Contexts/AuthContext.jsx";
+import RegisterForm from "./pages/RegisterUserPage.jsx";
+import GenerateQRPage from "./pages/GenerateQRPage.jsx";
+import AddReplacementForm from "./pages/AddReplacementForm.jsx";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <MenuProvider>
-          <RepairsProvider>
-            <AppRoutes />
-          </RepairsProvider>
-        </MenuProvider>
+        <AuthProvider>
+          <MenuProvider>
+            <RepairsProvider>
+              <Routes>
+                <Route path="/login" element={<LoginPage />}></Route>
+                <Route element={<ProtectedRoute />}>
+                  <Route
+                    path="/"
+                    element={
+                      <BasePage>
+                        <HomePage />
+                      </BasePage>
+                    }
+                  />
+                  <Route
+                    path="/repairs"
+                    element={
+                      <BasePage>
+                        <RepairPage />
+                      </BasePage>
+                    }
+                  />
+                  <Route path="/qr_scanner" element={<QrScanPage />} />
+                  <Route path="/add_device" element={<AddDevicePage />} />
+                  <Route path="/users" element={<RegisterForm/>}/>
+                  <Route path="/generate_qr" element={<GenerateQRPage/>} />
+                  <Route path="/replacements" element={<AddReplacementForm/>} />
+                  <Route path="/repair_form" element={<RepairFormPage/>} />
+
+                </Route>
+              </Routes>
+            </RepairsProvider>
+          </MenuProvider>
+        </AuthProvider>
       </BrowserRouter>
     </>
   );

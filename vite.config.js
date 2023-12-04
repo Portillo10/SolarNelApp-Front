@@ -48,7 +48,8 @@ export default defineConfig({
         globPatterns: ["**/*.{js,jsx,css,html,ico,png,svg}"],
         sourcemap: true,
         clientsClaim: true,
-      },
+        maximumFileSizeToCacheInBytes: 5242880,
+      }
     }),
   ],
 });

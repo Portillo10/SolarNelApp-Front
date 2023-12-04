@@ -4,7 +4,19 @@ input:focus ~ label {
   color: #3866f2;
 }
 
+select:focus ~ label {
+  top: 0;
+  font-size: 14px;
+  color: #3866f2;
+}
+
 input:not(:placeholder-shown) + label {
+  top: 0;
+  font-size: 14px;
+  color: #3866f2;
+}
+
+select:not(:placeholder-shown) + label {
   top: 0;
   font-size: 14px;
   color: #3866f2;
@@ -14,4 +26,10 @@ label {
   transition: 0.2s;
   left: 10px;
   pointer-events: none;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
 }

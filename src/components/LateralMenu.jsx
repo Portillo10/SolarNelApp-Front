@@ -16,9 +16,13 @@ import {
 
 import { useContext } from "react";
 import { MenuContext } from "../Contexts/MenuContext";
+import Cookies from "js-cookie";
+import { useAuth } from "../hooks/useAuth.jsx";
 
 function LateralMenu() {
   const { handleStyleMenuItem, activeMenu } = useContext(MenuContext);
+
+  const {logout} = useAuth()
 
   const sxObj = {
     fontSize: 30,
@@ -39,7 +43,9 @@ function LateralMenu() {
             <Home sx={sxObj} />
             <p>Inicio</p>
           </MenuItem>
-          <MenuItem route="/profile">
+          <MenuItem 
+          // route="/profile"
+          >
             <AccountCircle sx={sxObj} />
             <p>Mi Perfil</p>
           </MenuItem>
@@ -47,11 +53,15 @@ function LateralMenu() {
             <Handyman sx={sxObj} />
             <p>Reparaciones</p>
           </MenuItem>
-          <MenuItem route="/reportactivity">
+          <MenuItem 
+          // route="/reportactivity"
+          >
             <Assignment sx={sxObj} />
             <p>Registro de actividad</p>
           </MenuItem>
-          <MenuItem route="/stadistics">
+          <MenuItem 
+          // route="/stadistics"
+          >
             <LeaderboardRounded sx={sxObj} />
             <p>Consultar estadísticas</p>
           </MenuItem>
@@ -60,7 +70,7 @@ function LateralMenu() {
             <p>Cuentas de usuario</p>
             <ArrowForwardIosRounded />
           </MenuItem>
-          <MenuItem route="/qrcodes">
+          <MenuItem route="/generate_qr">
             <QrCodeRounded sx={sxObj} />
             <p>Generar códigos</p>
             <ArrowForwardIosRounded />
@@ -69,12 +79,14 @@ function LateralMenu() {
             <InventorySharp sx={sxObj} />
             <p>Repuestos</p>
           </MenuItem>
-          <MenuItem route="/settings">
+          <MenuItem 
+          // route="/settings"
+          >
             <Settings sx={sxObj} />
             <p>Configuración</p>
           </MenuItem>
         </ul>
-        <ul>
+        <ul onClick={() => logout()}>
           <MenuItem route="/login">
             <PowerSettingsNewRounded color="error" sx={sxObj} />
             <p>Cerrar sesion</p>

@@ -87,7 +87,7 @@ body::-webkit-scrollbar-thumb {
   height: 100vh;
   z-index: 1;
   transition: all 0.15s ease-in-out;
-  position: absolute;
+  position: fixed;
   overflow: hidden;
   left: 0;
 }
@@ -370,9 +370,11 @@ body::-webkit-scrollbar-thumb {
   max-height: 100%;
   overflow: auto;
   scroll-snap-align: center;
-  padding: 0 5px;
-  padding: 0 10px 0 10px;
   user-select: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 10px;
 }
 
 .CardRepairsBox::-webkit-scrollbar {
@@ -397,7 +399,7 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   padding: 5px 4px;
   box-shadow: 0px 4px 4px rgb(158, 158, 158);
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   border-radius: 15px;
   background-color: white;
   width: 100%;

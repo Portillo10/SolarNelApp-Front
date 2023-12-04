@@ -3,24 +3,23 @@ import { useRepair } from "../hooks/UseRepair";
 const propsFormat = {
   range: "KM",
   input: "V",
-  watts: "W",
+  power: "W",
   output: "V",
 };
 
 const tagColors = {
   range: "#B0C9C9",
   input: "#F9EBB2",
-  watts: "#D8BFD8",
+  power: "#D8BFD8",
   output: "#FFDAB9",
 };
 
 function CardRepair({ children, device }) {
-  const { setCurrentDevice } = useRepair();
+  const { setCurrentDevice, findDevice } = useRepair();
 
-  const { customerName, brand, numberCode, deviceType, deviceProps } =
-    device;
+  const { customerName, brand, numberCode, deviceType, deviceProps } = device;
 
-  // const devicePropsList = Object.keys(deviceProps);
+  const devicePropsList = Object.keys(deviceProps);
 
   const getTags = devicePropsList.map((prop, i) => {
     if (prop == "input" && Object.keys(deviceProps).includes("output")) {
@@ -49,21 +48,16 @@ function CardRepair({ children, device }) {
   return (
     <>
       <div
-        className="CardRepair dark:bg-[#222222] dark:shadow-none"
-        onClick={() => {
-          setCurrentDevice(device);
-        }}
+        className="CardRepair dark:bg-[#222222] dark:shadow-none min-h-[102px]"
+        onClick={() => setCurrentDevice(device)}
       >
-        <section className="flex flex-col py-2 px-4 align-middle justify-center">
+        <section className="flex flex-col p-2 items-center justify-center">
           <h3 className="text-center text-xl">#{numberCode}</h3>
-          <p className="w-16 text-center">{customerName}</p>
+          <p className="w-[85px] text-center">{customerName}</p>
         </section>
-        <section
-          className="px-3 flex flex-col gap-1"
-          style={{ borderLeft: "2px solid gray" }}
-        >
+        <section className="px-3 flex flex-col gap-1 border-l-2 border-gray-600">
           <p>{deviceType + " " + brand}</p>
-          <div className="flex gap-1 mb-1">{getTags}</div>
+          <div className="flex flex-wrap gap-1 mb-1">{getTags}</div>
           {children}
         </section>
       </div>

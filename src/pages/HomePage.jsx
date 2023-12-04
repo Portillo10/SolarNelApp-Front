@@ -17,6 +17,7 @@ import {
   ToolBoxIcon,
   DarkToolBoxIcon,
 } from "../hooks/Icons.jsx";
+
 import { useMenu } from "../hooks/UseMenu.jsx";
 
 const labels = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
@@ -157,8 +158,8 @@ function HomePage() {
         <div className="GroupButtons">
           <MenuButton icon={ReportIcon} />
           <MenuButton icon={EmployeeIcon} />
-          <MenuButton icon={AddIcon} addButton="AddButton" />
-          <MenuButton icon={RepairIconButton} />
+          <MenuButton icon={AddIcon} to={"/add_device"} addButton="AddButton" />
+          <MenuButton icon={RepairIconButton} to="/repairs" />
           <MenuButton icon={BarsDiagramIcon} />
         </div>
       </div>

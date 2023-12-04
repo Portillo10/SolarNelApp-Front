@@ -15,6 +15,7 @@ export const MenuProvider = ({ children }) => {
   const [activeMenu, setActiveMenu] = useState(false);
   const [menuAnimationFinished, setMenuAnimationFinished] = useState(true);
   const [darkMode, setDarkMode] = useState(startTheme());
+  const [lastPage, setLastPage] = useState("/");
 
   const handleTheme = () => {
     setDarkMode(prev => {
@@ -62,7 +63,9 @@ export const MenuProvider = ({ children }) => {
         hideMenu,
         darkMode,
         handleTheme,
-        menuAnimationFinished
+        menuAnimationFinished,
+        lastPage,
+        setLastPage
       }}
     >
       {children}

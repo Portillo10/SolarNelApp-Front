@@ -21,7 +21,7 @@ function MainHeader() {
           onClick={handleTheme}
           width="120px"
         />
-        <span className="TopMenuIcon">
+        <span className="cursor-pointer">
           <Link to="/qr_scanner">
             <QrCodeScannerRounded sx={{ fontSize: 32 }} />
           </Link>

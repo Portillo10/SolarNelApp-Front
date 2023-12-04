@@ -1,11 +1,9 @@
 import HeaderRepairPage from "../components/HeaderRepairPage.jsx";
 import SearchBar from "../components/SearchBar.jsx";
-
 import RepairBox from "../components/RepairBox.jsx";
+
 import DeviceInfoPage from "./DeviceInfoPage.jsx";
 import RepairDetailPage from "./RepairDetailPage.jsx";
-
-import { RepairsProvider } from "../Contexts/RepairsContext.jsx";
 
 function RepairPage() {
   return (

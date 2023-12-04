@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useMenu } from "../hooks/UseMenu";
+
 import LateralMenu from "../components/LateralMenu";
 import MainHeader from "../components/MainHeader";
-import { useMenu } from "../hooks/UseMenu";
-import { useEffect } from "react";
 
 function BasePage({ children }) {
   const [menuOpenCount, setMenuOpenCount] = useState(0);
