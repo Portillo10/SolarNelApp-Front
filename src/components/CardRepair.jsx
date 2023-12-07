@@ -15,7 +15,7 @@ const tagColors = {
 };
 
 function CardRepair({ children, device }) {
-  const { setCurrentDevice, findDevice } = useRepair();
+  const { setCurrentDevice } = useRepair();
 
   const { customerName, brand, numberCode, deviceType, deviceProps } = device;
 
@@ -51,9 +51,9 @@ function CardRepair({ children, device }) {
         className="CardRepair dark:bg-[#222222] dark:shadow-none min-h-[102px]"
         onClick={() => setCurrentDevice(device)}
       >
-        <section className="flex flex-col p-2 items-center justify-center">
+        <section className="flex max-w-min min-w-[100px] flex-col p-2 items-center justify-center">
           <h3 className="text-center text-xl">#{numberCode}</h3>
-          <p className="w-[85px] text-center">{customerName}</p>
+          <p className="flex-none text-center overflow-hidden">{customerName}</p>
         </section>
         <section className="px-3 flex flex-col gap-1 border-l-2 border-gray-600">
           <p>{deviceType + " " + brand}</p>

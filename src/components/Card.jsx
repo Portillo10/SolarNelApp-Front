@@ -1,3 +1,5 @@
+import { CircularProgress } from "@mui/material";
+
 function Card({ backColor, title, info, icon }) {
   return (
     <>
@@ -6,7 +8,7 @@ function Card({ backColor, title, info, icon }) {
       >
         <section>
           <p>{title}</p>
-          <h4>{info}</h4>
+          {info !== undefined ? <h4>{info}</h4> : <CircularProgress/>}
         </section>
         <img src={icon} alt="" />
       </div>

@@ -28,6 +28,7 @@ import { useNavigate } from "react-router-dom";
 import { statusEnum } from "../utils/request.utils";
 import { repairDevice } from "../services/device.services";
 import { getReplacements, getTypes } from "../services/replacement.services";
+import ReplacementField from "../components/ReplacementField";
 
 const vocals = ["a", "e", "i", "o", "u"];
 
@@ -108,9 +109,12 @@ function RepairFormPage() {
   };
 
   const deleteSelectedFields = () => {
-    const newReplacements = replacements.filter(
-      (replacement) => !selectedFields.includes(replacement._id)
-    );
+    const newReplacements = replacements.filter((replacement) => {
+      if (!selectedFields.includes(replacement._id)) return true;
+      else {
+        setTotalPrice(totalPrice - replacement.quantity * replacement.price);
+      }
+    });
     setSelectedFields([]);
     setReplacements(newReplacements);
   };
@@ -163,7 +167,7 @@ function RepairFormPage() {
                 {replacements.map((replacement, i) => (
                   <span
                     key={i}
-                    onClick={() => toggleSelection(replacement._id)}
+                    onClick={(e) => toggleSelection(replacement._id)}
                     className={`flex transition-colors justify-between py-1 cursor-pointer border-b-[2px] border-[#747474] gap-1 dark:border-[#898788] max-h-[58px] overflow-hidden ${
                       selectedFields.includes(replacement._id)
                         ? `bg-[#cca37a] dark:bg-[#001F3F]`

@@ -49,7 +49,7 @@ export default defineConfig({
         sourcemap: true,
         clientsClaim: true,
         maximumFileSizeToCacheInBytes: 5242880,
-      }
+      },
     }),
   ],
 });

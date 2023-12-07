@@ -6,3 +6,8 @@ export const toUpper = (word = "") => {
   });
   return finalWord;
 };
+
+export const toShortQuantity = (quantity) => {
+  let finalQuantity = (quantity / 1000).toString().split(".")
+  return (finalQuantity[0]) + "k"
+}

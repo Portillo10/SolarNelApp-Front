@@ -88,6 +88,7 @@ export default function list({
   });
 
   const compareObjects = (obj1, obj2) => {
+    if (Object.keys(obj1).length !== Object.keys(obj2).length) return false
     for (let i in obj1) {
       if (obj1[i] !== obj2[i]) {
         return false;
@@ -106,27 +107,19 @@ export default function list({
     setFeatures(feat?.replacementProps);
   }, [watch().replacementType]);
 
-  useEffect(() => {
-    // console.log(features);
-  }, [features]);
-
   const filterReplacements = (prop) => {
     const propList = [];
-    return list
-      .filter((replacement) => {
-        if (propList.includes(replacement.props[prop])) {
-          return false;
-        }
-        propList.push(replacement.props[prop]);
-        return (
-          replacement.replacementType.toLowerCase().trim() ===
+    list.forEach((replacement) => {
+      if (
+        !propList.includes(replacement.props[prop]) &&
+        replacement.replacementType.toLowerCase().trim() ===
           watch().replacementType.toLowerCase().trim()
-        );
-      })
-      .map((replacement) => {
-        return replacement.props[prop];
-      })
-      .sort((a, b) => a - b);
+      ) {
+        propList.push(replacement.props[prop]);
+      }
+    });
+
+    return propList.filter((prop) => prop !== undefined).sort((a, b) => a - b);
   };
 
   return (
