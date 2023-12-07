@@ -4,8 +4,17 @@ import RepairBox from "../components/RepairBox.jsx";
 
 import DeviceInfoPage from "./DeviceInfoPage.jsx";
 import RepairDetailPage from "./RepairDetailPage.jsx";
+import { useRepair } from "../hooks/UseRepair.jsx";
+import { useEffect } from "react";
 
 function RepairPage() {
+  
+  const {setScrollIndex} = useRepair()
+
+  useEffect(()=> {
+    setScrollIndex(0)
+  },[])
+
   return (
     <>
       <div className="RepairPage bg-[#f5f5f5] dark:bg-dark-container dark:shadow-none dark:border border-[#5e5a5f]">

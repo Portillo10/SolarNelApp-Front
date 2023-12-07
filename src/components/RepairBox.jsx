@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useMenu } from "../hooks/UseMenu";
+// import { useMenu } from "../hooks/UseMenu";
 import { useRepair } from "../hooks/UseRepair";
 import { getAllDevices } from "../services/device.services";
 import { AttachMoneyRounded } from "@mui/icons-material";
@@ -10,12 +10,12 @@ function RepairBox() {
   const [receivedDevices, setReceivedDevices] = useState();
   const [repairedDevices, setRepairedDevices] = useState();
   const [deliveredDevices, setDeliveredDevices] = useState();
-  const [menuOpenCount, setMenuOpenCount] = useState(0);
+  // const [menuOpenCount, setMenuOpenCount] = useState(0);
 
-  const { scroll, diagnosticToString, loadCards, updateStateControl } = useRepair();
+  const { scroll, diagnosticToString, loadCards, updateStateControl, setScrollIndex } = useRepair();
   const [requestWaiting, setRequestWaiting] = useState(true);
 
-  const { menuAnimationFinished } = useMenu();
+  // const { menuAnimationFinished } = useMenu();
 
   const fetchDevices = async ()=>{
       try {
@@ -37,13 +37,17 @@ function RepairBox() {
   }, [updateStateControl]);
 
 
-
   useEffect(() => {
-    if (menuOpenCount > 0) return;
-    if (menuAnimationFinished) {
-      setMenuOpenCount(1);
-    }
-  }, [menuAnimationFinished]);
+    setScrollIndex(0)
+  }, [])
+
+
+  // useEffect(() => {
+  //   if (menuOpenCount > 0) return;
+  //   if (menuAnimationFinished) {
+  //     setMenuOpenCount(1);
+  //   }
+  // }, [menuAnimationFinished]);
 
   return (
     <>

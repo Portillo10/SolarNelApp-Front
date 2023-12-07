@@ -16,6 +16,7 @@ import { statusEnum } from "../utils/request.utils";
 
 import QrDocument from "../components/QrDocument";
 import GoBackArrow from "../components/GoBackArrow";
+import LoadingComponent from "../components/LoadingComponent";
 import ThemeProviderComponent from "../components/ThemeProviderComponent";
 
 export default function GenerateQRPage() {
@@ -104,6 +105,7 @@ export default function GenerateQRPage() {
             El número inicial debe ser mayor al último número registrado
           </Alert>
         </Snackbar>
+        <LoadingComponent fetchLoading={fetchLoading}></LoadingComponent>
       </ThemeProviderComponent>
     </div>
   );
