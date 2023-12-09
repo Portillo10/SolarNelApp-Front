@@ -145,7 +145,7 @@ function DeviceInfoPage() {
           id="InfoContainer"
           className="p-3 flex flex-col gap-2 w-full h-[calc(100vh-120px)] rounded-[20px] overflow-y-auto"
         >
-          <section className="w-full flex gap-3 items-center dark:bg-dark-container ">
+          <section className="w-11/12 flex gap-3 items-center dark:bg-dark-container ">
             <h1 className="text-xl font-extrabold">
               {`#${currentDevice?.numberCode} - ${currentDevice?.deviceType} ${currentDevice?.brand}`}
             </h1>

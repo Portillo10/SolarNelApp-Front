@@ -48,10 +48,10 @@ function CardRepair({ children, device }) {
   return (
     <>
       <div
-        className="CardRepair dark:bg-[#222222] dark:shadow-none min-h-[102px]"
+        className="CardRepair dark:bg-[#222222] dark:shadow-none"
         onClick={() => setCurrentDevice(device)}
       >
-        <section className="flex max-w-min min-w-[100px] flex-col p-2 items-center justify-center">
+        <section className="flex max-w-min min-w-[100px] flex-col p-2 items-center justify-center min-h-[92px]">
           <h3 className="text-center text-xl">#{numberCode}</h3>
           <p className="flex-none text-center overflow-hidden">{customerName}</p>
         </section>
