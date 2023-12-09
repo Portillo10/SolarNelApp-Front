@@ -69,7 +69,7 @@ function RepairDetailPage() {
         <span className="absolute -right-2 -top-2 rounded-full text-white bg-gray-900 p-1">
           <CloseRounded onClick={() => setCurrentRepair(null)} />
         </span>
-        <CardHoles px={8} py={5} size={30}/>
+        <CardHoles px={8} py={5} size={30} />
         <div
           id="RepairDetail"
           className="overflow-y-auto h-[calc(100vh-200px)] px-4"
@@ -107,8 +107,18 @@ function RepairDetailPage() {
             <span className="flex justify-between py-1">
               <p className="text-lg font-bold">Total</p>
               <span className="flex text-[#006400] items-center dark:text-green-500">
-                <AttachMoneyRounded sx={{ fontSize: 22 }} />
-                <p className="text-lg font-bold ">{currentRepair?.repairPrice}</p>
+                {currentRepair?.repairPrice > 0 ? (
+                  <>
+                    <AttachMoneyRounded sx={{ fontSize: 18 }} />
+                    <p className="text-lg font-extrabold">
+                      {currentRepair?.repairPrice}
+                    </p>
+                  </>
+                ) : (
+                  <p className="text-lg font-extrabold dark:text-[#00D1A1] text-[#006C5B]">
+                    Garantía
+                  </p>
+                )}
               </span>
             </span>
           </section>

@@ -46,6 +46,7 @@ function QRscanner() {
     };
 
     const onScanError = (e) => {
+      console.log(e.message)
     };
 
     qrScanner.start(

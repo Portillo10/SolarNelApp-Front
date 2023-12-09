@@ -12,35 +12,39 @@ function RepairBox() {
   const [deliveredDevices, setDeliveredDevices] = useState();
   // const [menuOpenCount, setMenuOpenCount] = useState(0);
 
-  const { scroll, diagnosticToString, loadCards, updateStateControl, setScrollIndex } = useRepair();
+  const {
+    scroll,
+    diagnosticToString,
+    loadCards,
+    updateStateControl,
+    setScrollIndex,
+  } = useRepair();
   const [requestWaiting, setRequestWaiting] = useState(true);
 
   // const { menuAnimationFinished } = useMenu();
 
-  const fetchDevices = async ()=>{
-      try {
-        const response = await getAllDevices();
-        const {
-          data: { received, repaired, delivered },
-        } = response;
-        setReceivedDevices(received);
-        setRepairedDevices(repaired);
-        setDeliveredDevices(delivered);
-        setRequestWaiting(false);
-      } catch (error) {
-        console.log(error)
-      }
-  }
+  const fetchDevices = async () => {
+    try {
+      const response = await getAllDevices();
+      const {
+        data: { received, repaired, delivered },
+      } = response;
+      setReceivedDevices(received);
+      setRepairedDevices(repaired);
+      setDeliveredDevices(delivered);
+      setRequestWaiting(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
-    fetchDevices()
+    fetchDevices();
   }, [updateStateControl]);
 
-
   useEffect(() => {
-    setScrollIndex(0)
-  }, [])
-
+    setScrollIndex(0);
+  }, []);
 
   // useEffect(() => {
   //   if (menuOpenCount > 0) return;
@@ -78,10 +82,18 @@ function RepairBox() {
                 repairedDevices?.map((device, i) => (
                   <CardRepair key={i} device={device}>
                     <div className="flex items-center text-green-700 dark:text-green-500 h-[24px]">
-                      <AttachMoneyRounded />
-                      <p className="text-md font-extrabold">
-                        {device.lastRepairPrice}
-                      </p>
+                      {device.lastRepairPrice > 0 ? (
+                        <>
+                          <AttachMoneyRounded sx={{ fontSize: 18 }} />
+                          <p className="text-md font-extrabold">
+                            {device.lastRepairPrice}
+                          </p>
+                        </>
+                      ) : (
+                        <p className="text-md font-extrabold dark:text-[#00D1A1] text-[#006C5B]">
+                          Garantía
+                        </p>
+                      )}
                     </div>
                   </CardRepair>
                 ))

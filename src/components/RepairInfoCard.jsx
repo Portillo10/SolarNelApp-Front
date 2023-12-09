@@ -1,6 +1,6 @@
 import { CheckIcon } from "../hooks/Icons";
 import { useRepair } from "../hooks/UseRepair";
-import {AttachMoneyRounded} from '@mui/icons-material'
+import { AttachMoneyRounded } from "@mui/icons-material";
 import CardHoles from "./CardHoles";
 
 function RepairInfoCard({ repair }) {
@@ -32,7 +32,9 @@ function RepairInfoCard({ repair }) {
     return repair.replacements.map((replacement, i) => {
       return (
         <span className="flex justify-between gap-[1px]" key={i}>
-          <p className="text-[12px] font-bold">{`${replacement.replacement.replacementType} ${
+          <p className="text-[12px] font-bold">{`${
+            replacement.replacement.replacementType
+          } ${
             replacement.quantity > 1 ? "(" + replacement.quantity + ")" : ""
           }`}</p>
           <img src={CheckIcon} width="10px" alt="" />
@@ -44,7 +46,7 @@ function RepairInfoCard({ repair }) {
   return (
     <>
       <div className="flex flex-col bg-[#FFE4B5] dark:bg-[#333333] dark:shadow-none rounded-xl shadow-md shadow-slate-600 px-2 py-1 w-[135px] h-[162px]">
-        <CardHoles px={1} py={2} size={12}/>
+        <CardHoles px={1} py={2} size={12} />
         <h1 className="text-center border-b-2 font-extrabold text-lg border-black mx-1 dark:border-[#898788]">
           {new Date(repair.repairDate).toLocaleDateString()}
         </h1>
@@ -55,8 +57,14 @@ function RepairInfoCard({ repair }) {
           </div>
 
           <span className="flex text-green-700 dark:text-green-500 items-center">
-            <AttachMoneyRounded sx={{fontSize:18}}/>
-            <p className=" text-sm font-extrabold">{repair.repairPrice}</p>
+            {repair.repairPrice > 0 ? (
+              <>
+                <AttachMoneyRounded sx={{ fontSize: 18 }} />
+                <p className="text-sm font-extrabold">{repair.repairPrice}</p>
+              </>
+            ) : (
+              <p className="text-sm font-extrabold dark:text-[#00D1A1] text-[#006C5B]">Garantía</p>
+            )}
           </span>
         </section>
         <section className="flex justify-center">
