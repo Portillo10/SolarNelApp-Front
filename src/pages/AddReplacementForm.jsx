@@ -23,15 +23,18 @@ import GoBackArrow from "../components/GoBackArrow";
 import ThemeProviderComponent from "../components/ThemeProviderComponent";
 import ModalComponent from "../components/ModalComponent";
 import AddTypeForm from "../components/AddTypeForm";
+import { cashFormat } from "../utils/others.utils";
 
 const propsInputText = ["Referencia", "Marca"];
 
 export default function AddReplacementForm() {
-  const { handleSubmit, register, watch, unregister, resetField } = useForm({
-    defaultValues: {
-      replacementType: "",
-    },
-  });
+  const { handleSubmit, register, watch, unregister, resetField, setValue } =
+    useForm({
+      defaultValues: {
+        replacementType: "",
+        price: 0,
+      },
+    });
 
   const [pageLoading, setPageLoading] = useState(true);
   const [replacementTypes, setReplacementTypes] = useState([]);
@@ -39,7 +42,7 @@ export default function AddReplacementForm() {
   const [fetchLoading, setFetchLoading] = useState(false);
   const [fetchCompleted, setFetchCompleted] = useState(false);
   const [openModal, setOpenModal] = useState(false);
-  const [error, setError] = useState("")
+  const [error, setError] = useState("");
 
   const onSubmit = handleSubmit(async (data) => {
     setFetchLoading(true);
@@ -182,8 +185,17 @@ export default function AddReplacementForm() {
             <span className="flex gap-4 items-center mt-3">
               <p className="text-xl">Precio:</p>
               <TextField
-                {...register("price", { required: true })}
+                value={cashFormat(watch().price)}
                 type="number"
+                onChange={(e) => {
+                  try {
+                    const price = e.target.value.replace(".", "");
+                    setValue("price", Number(price));
+                  } catch (error) {
+                    console.log("errorMSG", error);
+                  }
+                }}
+                // type="number"
                 autoComplete="off"
                 id="outlined-start-adornment"
                 InputProps={{

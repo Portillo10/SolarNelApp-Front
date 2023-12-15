@@ -29,6 +29,7 @@ import { statusEnum } from "../utils/request.utils";
 import { repairDevice } from "../services/device.services";
 import { getReplacements, getTypes } from "../services/replacement.services";
 import ReplacementField from "../components/ReplacementField";
+import { cashFormat } from "../utils/others.utils";
 
 const vocals = ["a", "e", "i", "o", "u"];
 
@@ -194,7 +195,7 @@ function RepairFormPage() {
                     <span className="flex text-[#006400] dark:text-green-500 items-center pointer-events-none">
                       <AttachMoneyRounded fontSize="small" />
                       <p className="text-lg font-bold">
-                        {replacement.price * replacement.quantity}
+                        {cashFormat(replacement.price * replacement.quantity)}
                       </p>
                     </span>
                   </span>
@@ -224,10 +225,11 @@ function RepairFormPage() {
                     <AttachMoneyRounded sx={{ fontSize: 22 }} />
                     <input
                       type="number"
-                      value={totalPrice}
+                      value={cashFormat(totalPrice)}
                       readOnly={totalReadOnly}
                       onChange={(e) => {
-                        setTotalPrice(Number(e.target.value));
+                        let price = e.target.value.replace(".", "")
+                        setTotalPrice(Number(price));
                       }}
                       onClick={() => setTotalReadOnly(false)}
                       className="bg-transparent border-b-2 border-[#8B8787] text-center w-24 text-lg font-bold"

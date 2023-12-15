@@ -5,6 +5,7 @@ import { getAllDevices } from "../services/device.services";
 import { AttachMoneyRounded } from "@mui/icons-material";
 import CardRepair from "./CardRepair";
 import RepairBoxSkeleton from "../skeletons/RepairBoxSkeleton";
+import { cashFormat } from "../utils/others.utils";
 
 function RepairBox() {
   const [receivedDevices, setReceivedDevices] = useState();
@@ -86,7 +87,7 @@ function RepairBox() {
                         <>
                           <AttachMoneyRounded sx={{ fontSize: 18 }} />
                           <p className="text-md font-extrabold">
-                            {device.lastRepairPrice}
+                            {cashFormat(device.lastRepairPrice)}
                           </p>
                         </>
                       ) : (

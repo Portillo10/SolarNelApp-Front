@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import { useRepair } from "../hooks/UseRepair";
 import { getTypes } from "../services/replacement.services";
+import { cashFormat } from "../utils/others.utils";
 
 import { AttachMoneyRounded, CloseRounded } from "@mui/icons-material";
 
@@ -99,7 +100,7 @@ function RepairDetailPage() {
                 <span className="flex text-[#006400] items-center dark:text-green-500">
                   <AttachMoneyRounded fontSize="small" />
                   <p className="text-lg font-bold">
-                    {replacement.replacement.price * replacement.quantity}
+                    {cashFormat(replacement.replacement.price * replacement.quantity)}
                   </p>
                 </span>
               </span>
@@ -111,7 +112,7 @@ function RepairDetailPage() {
                   <>
                     <AttachMoneyRounded sx={{ fontSize: 18 }} />
                     <p className="text-lg font-extrabold">
-                      {currentRepair?.repairPrice}
+                      {cashFormat(currentRepair?.repairPrice)}
                     </p>
                   </>
                 ) : (

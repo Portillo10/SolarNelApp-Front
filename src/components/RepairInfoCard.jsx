@@ -2,6 +2,7 @@ import { CheckIcon } from "../hooks/Icons";
 import { useRepair } from "../hooks/UseRepair";
 import { AttachMoneyRounded } from "@mui/icons-material";
 import CardHoles from "./CardHoles";
+import { cashFormat } from "../utils/others.utils";
 
 function RepairInfoCard({ repair }) {
   const { setCurrentRepair } = useRepair();
@@ -60,7 +61,9 @@ function RepairInfoCard({ repair }) {
             {repair.repairPrice > 0 ? (
               <>
                 <AttachMoneyRounded sx={{ fontSize: 18 }} />
-                <p className="text-sm font-extrabold">{repair.repairPrice}</p>
+                <p className="text-sm font-extrabold">
+                  {cashFormat(repair.repairPrice)}
+                </p>
               </>
             ) : (
               <p className="text-sm font-extrabold dark:text-[#00D1A1] text-[#006C5B]">Garantía</p>

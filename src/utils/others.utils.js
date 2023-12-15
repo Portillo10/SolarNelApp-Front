@@ -11,3 +11,16 @@ export const toShortQuantity = (quantity) => {
   let finalQuantity = (quantity / 1000).toString().split(".")
   return (finalQuantity[0]) + "k"
 }
+
+export const cashFormat = (price) =>  {
+  try {
+    const number = ""
+  } catch (error) {
+    
+  }
+  return price.toLocaleString("es-ES", {
+    style: "currency",
+    currency: "EUR",
+    maximumFractionDigits: 0
+  }).slice(0, -2)
+}
