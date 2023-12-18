@@ -7,7 +7,8 @@ import BasePage from "./pages/BasePage";
 import LoginPage from "./pages/LoginPage";
 import QrScanPage from "./pages/QrScanPage";
 import AddDevicePage from "./pages/AddDevicePage.jsx";
-import RepairFormPage from './pages/RepairFormPage.jsx'
+import RepairFormPage from "./pages/RepairFormPage.jsx";
+import ReplacementListPage from "./pages/ReplacementListPage.jsx";
 
 //Providers
 import { MenuProvider } from "./Contexts/MenuContext";
@@ -46,11 +47,17 @@ function App() {
                   />
                   <Route path="/qr_scanner" element={<QrScanPage />} />
                   <Route path="/add_device" element={<AddDevicePage />} />
-                  <Route path="/users" element={<RegisterForm/>}/>
-                  <Route path="/generate_qr" element={<GenerateQRPage/>} />
-                  <Route path="/replacements" element={<AddReplacementForm/>} />
-                  <Route path="/repair_form" element={<RepairFormPage/>} />
-
+                  <Route path="/users" element={<RegisterForm />} />
+                  <Route path="/generate_qr" element={<GenerateQRPage />} />
+                  <Route
+                    path="/replacements"
+                    element={<ReplacementListPage />}
+                  />
+                  <Route path="/repair_form" element={<RepairFormPage />} />
+                  <Route
+                    path="/addreplacements"
+                    element={<AddReplacementForm />}
+                  />
                 </Route>
               </Routes>
             </RepairsProvider>

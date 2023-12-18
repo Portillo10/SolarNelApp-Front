@@ -435,16 +435,7 @@ body::-webkit-scrollbar-thumb {
   margin: 10px 0px;
 }
 
-@media screen and (max-width: 376px) {
-  .PropTag {
-    font-size: 12px;
-  }
-}
-
 @media screen and (max-width: 358px) {
-  .PropTag {
-    font-size: 10px;
-  }
   .RepairHeader p {
     font-size: 14px;
   }

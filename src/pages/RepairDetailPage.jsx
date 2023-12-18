@@ -67,7 +67,7 @@ function RepairDetailPage() {
         }}
         className="transition-all ease-out absolute max-w-[500px] w-full bg-[#FFE4B5] right-1/2 rounded-[20px] h-[calc(100vh-120px)] border-2 border-[#b29f7e] dark:text-white dark:bg-[#333333] dark:border dark:border-[#444444]"
       >
-        <span className="absolute -right-2 -top-2 rounded-full text-white bg-gray-900 p-1">
+        <span className="absolute -right-2.5 -top-2.5 rounded-full text-white bg-gray-900 p-1 w-8 h-8 flex justify-center items-center">
           <CloseRounded onClick={() => setCurrentRepair(null)} />
         </span>
         <CardHoles px={8} py={5} size={30} />

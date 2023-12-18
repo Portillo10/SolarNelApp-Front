@@ -25,7 +25,7 @@ import ModalComponent from "../components/ModalComponent";
 import AddTypeForm from "../components/AddTypeForm";
 import { cashFormat } from "../utils/others.utils";
 
-const propsInputText = ["Referencia", "Marca"];
+const propsInputText = ["Referencia", "Marca", "Capacidad"];
 
 export default function AddReplacementForm() {
   const { handleSubmit, register, watch, unregister, resetField, setValue } =
@@ -55,7 +55,7 @@ export default function AddReplacementForm() {
           resetField("props." + feat.prop);
         }
         setFetchCompleted(true);
-        resetField("price");
+        setValue("price", 0);
       }
     } catch (error) {
       console.log(error);
@@ -97,7 +97,7 @@ export default function AddReplacementForm() {
 
   return (
     <div className="dark:text-white w-full flex flex-col gap-2 py-3 items-center h-screen overflow-auto bg-[#f0f3f8] dark:bg-[#222222] pt-5 px-5 relative">
-      <GoBackArrow />
+      <GoBackArrow to={"/replacements"}/>
       <ThemeProviderComponent>
         <form className="flex flex-col items-center" onSubmit={onSubmit}>
           <div className="m-2 max-w-[350px] w-full flex flex-col shadow-container bg-[#F5F5F5] dark:bg-[#111111] dark:shadow-none p-5 rounded-[20px] gap-4">
@@ -150,7 +150,7 @@ export default function AddReplacementForm() {
                 display: "flex",
                 flexWrap: "wrap",
                 flexDirection: "row",
-                gap: 0.6,
+                gap: 1,
                 justifyContent: "center",
               }}
             >
@@ -158,8 +158,9 @@ export default function AddReplacementForm() {
                 return (
                   <TextField
                     sx={{
-                      width: "49%",
+                      width: "48%",
                       minWidth: features.length == 1 ? "135px" : "",
+                      marginTop: 0.5
                     }}
                     key={i}
                     {...register("props." + feat.prop, { required: true })}

@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  darkMode: 'class',
+
+const withMT = require("@material-tailwind/react/utils/withMT");
+
+module.exports = withMT({
+  darkMode: "class",
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
@@ -10,8 +13,8 @@ export default {
         container: "0px 4px 10px rgb(153, 151, 151);",
         "menu-button": "0px 2px 5px rgb(80, 80, 80);",
       },
-      backgroundColor:{
-        "dark-container": "#111111"
+      backgroundColor: {
+        "dark-container": "#111111",
       },
       backgroundImage: {
         danger: "linear-gradient(to right, #ffd699, #fdeac0);",
@@ -24,15 +27,15 @@ export default {
         "dark-money": "linear-gradient(to right, #617952, #7ca077);",
       },
       translate: {
-        menu: "0px"
+        menu: "0px",
       },
-      transitionDuration:{
-        common: "300"
-      }
+      transitionDuration: {
+        common: "300",
+      },
     },
-    screens:{
-      desktop: "680px"
-    }
+    screens: {
+      desktop: "680px",
+    },
   },
   plugins: [],
-};
+});
