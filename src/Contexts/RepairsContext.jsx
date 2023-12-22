@@ -19,8 +19,8 @@ export const RepairsProvider = ({ children }) => {
   const [search, setSearch] = useState("");
   const [currentRepair, setCurrentRepair] = useState(null);
   const [currentDevice, setCurrentDevice] = useState(null);
-  const [newDeviceId, setNewDeviceId] = useState(null)
-  const [updateStateControl, setUpdateStateControl] = useState(false)
+  const [newDeviceId, setNewDeviceId] = useState(null);
+  const [updateStateControl, setUpdateStateControl] = useState(false);
 
   const spinner = (
     <div
@@ -60,12 +60,13 @@ export const RepairsProvider = ({ children }) => {
   };
 
   const removeAccents = (str) => {
+    if (!str) return "";
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   };
 
-  const setUpdateControl = ()=> {
-    setUpdateStateControl(!updateStateControl)
-  }
+  const setUpdateControl = () => {
+    setUpdateStateControl(!updateStateControl);
+  };
 
   const loadCards = (cardList = []) => {
     if (cardList.length == 0)
@@ -79,11 +80,11 @@ export const RepairsProvider = ({ children }) => {
         (
           removeAccents(device.deviceType) +
           " " +
-          removeAccents(device.deviceBrand)
+          removeAccents(device.brand)
         )
           .toLowerCase()
           .includes(removeAccents(search.toLowerCase())) ||
-        device.deviceID.toString().includes(search)
+        device.numberCode.toString().includes(search)
       ) {
         return true;
       }
@@ -99,13 +100,13 @@ export const RepairsProvider = ({ children }) => {
   };
 
   const findDevice = async (id) => {
-    const response = await getDevice(id)
+    const response = await getDevice(id);
     if (response.status === statusEnum.OK) {
       return response.data.device;
-    } else if (response.status === statusEnum.NO_CONTENT){
+    } else if (response.status === statusEnum.NO_CONTENT) {
       return false;
-    } else if (response.status === statusEnum.SERVER_ERROR){
-      throw new Error("find device error")
+    } else if (response.status === statusEnum.SERVER_ERROR) {
+      throw new Error("find device error");
     }
   };
 
@@ -128,7 +129,7 @@ export const RepairsProvider = ({ children }) => {
         newDeviceId,
         setNewDeviceId,
         updateStateControl,
-        setUpdateControl
+        setUpdateControl,
       }}
     >
       {children}

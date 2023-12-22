@@ -175,7 +175,7 @@ function RepairFormPage() {
                         : ""
                     }`}
                   >
-                    <p className="text-base font-bold max-w-[60%] pointer-events-none">
+                    <p className="font-bold max-w-[60%] pointer-events-none">
                       {`${replacement.quantity} ${
                         replacement.quantity > 1
                           ? singleToPlural(replacement.replacementType)
@@ -194,7 +194,7 @@ function RepairFormPage() {
                     </p>
                     <span className="flex text-[#006400] dark:text-green-500 items-center pointer-events-none">
                       <AttachMoneyRounded fontSize="small" />
-                      <p className="text-lg font-bold">
+                      <p className="font-bold">
                         {cashFormat(replacement.price * replacement.quantity)}
                       </p>
                     </span>

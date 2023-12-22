@@ -25,11 +25,11 @@ export default function AddTypeForm({
   const onSubmit = handleSubmit(async (data) => {
     setFetchLoading(true);
     const finalData = {
-      typeDesc: toUpper(data.typeDesc),
+      typeDesc: toUpper(data.typeDesc).trim(),
       replacementProps: replacementProps.map((props) => {
         return {
-          prop: toUpper(props.prop),
-          symbol: props.symb.toUpperCase(),
+          prop: toUpper(props.prop).trim(),
+          symbol: props.symb.toUpperCase().trim(),
         };
       }),
     };

@@ -8,7 +8,7 @@ export default function ReplacementCard({
   const colors = ["#B0C9C9", "#D8BFD8", "#F9EBB2", "#FFDAB9"];
 
   return (
-    <div className="bg-white dark:bg-[#222222] rounded-xl p-3 w-36 flex flex-col items-center gap-2 shadow-card border border-gray-300 dark:border-gray-800 dark:shadow-none">
+    <div className="bg-white dark:bg-[#222222] rounded-xl p-3 min-w-36 flex flex-col items-center gap-2 shadow-card border border-gray-300 dark:border-gray-800 dark:shadow-none">
       <p className="font-bold">{toUpper(replacementType)}</p>
       <span className="flex flex-col items-center gap-2">
         {symbols.map((el, i) => (

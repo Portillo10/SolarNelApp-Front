@@ -68,9 +68,13 @@ export default function list({
 
   const onSubmit = handleSubmit(async (data) => {
     try {
-      const replacement = list.find((rep) =>
-        compareObjects(rep.props, data.props)
-      );
+      const replacement = list
+        .filter(
+          (rep) =>
+            rep.replacementType.toLowerCase() ===
+            data.replacementType.toLowerCase()
+        )
+        .find((rep) => compareObjects(rep.props, data.props));
 
       const symbol = types.find(
         (type) =>
@@ -88,7 +92,7 @@ export default function list({
   });
 
   const compareObjects = (obj1, obj2) => {
-    if (Object.keys(obj1).length !== Object.keys(obj2).length) return false
+    if (Object.keys(obj1).length !== Object.keys(obj2).length) return false;
     for (let i in obj1) {
       if (obj1[i] !== obj2[i]) {
         return false;
@@ -103,22 +107,19 @@ export default function list({
       unregister("props." + feat.prop);
     });
     const feat = types.find((rep) => rep.typeDesc === watch().replacementType);
-    // console.log(feat)
     setFeatures(feat?.replacementProps);
   }, [watch().replacementType]);
 
   const filterReplacements = (prop) => {
-    const propList = [];
-    list.forEach((replacement) => {
+    let propList = list.map((replacement) => {
       if (
-        !propList.includes(replacement.props[prop]) &&
-        replacement.replacementType.toLowerCase().trim() ===
-          watch().replacementType.toLowerCase().trim()
+        replacement.replacementType ===
+        watch().replacementType.toLocaleLowerCase()
       ) {
-        propList.push(replacement.props[prop]);
+        return replacement.props[prop];
       }
     });
-
+    propList = [...new Set(propList)];
     return propList.filter((prop) => prop !== undefined).sort((a, b) => a - b);
   };
 

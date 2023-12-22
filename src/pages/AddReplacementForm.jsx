@@ -45,11 +45,15 @@ export default function AddReplacementForm() {
   const [error, setError] = useState("");
 
   const onSubmit = handleSubmit(async (data) => {
-    setFetchLoading(true);
     try {
-      const response = await addReplacement(data);
+      const { props, ...rest } = data;
+      rest.props = {}
+      for (let prop in props) {
+        rest.props[prop] = props[prop].toUpperCase().trim();
+      }
+
+      const response = await addReplacement(rest);
       if (response.status === statusEnum.OK) {
-        console.log(response);
         setFetchLoading(false);
         for (let feat of features) {
           resetField("props." + feat.prop);
@@ -97,7 +101,7 @@ export default function AddReplacementForm() {
 
   return (
     <div className="dark:text-white w-full flex flex-col gap-2 py-3 items-center h-screen overflow-auto bg-[#f0f3f8] dark:bg-[#222222] pt-5 px-5 relative">
-      <GoBackArrow to={"/replacements"}/>
+      <GoBackArrow to={"/replacements"} />
       <ThemeProviderComponent>
         <form className="flex flex-col items-center" onSubmit={onSubmit}>
           <div className="m-2 max-w-[350px] w-full flex flex-col shadow-container bg-[#F5F5F5] dark:bg-[#111111] dark:shadow-none p-5 rounded-[20px] gap-4">
@@ -160,7 +164,7 @@ export default function AddReplacementForm() {
                     sx={{
                       width: "48%",
                       minWidth: features.length == 1 ? "135px" : "",
-                      marginTop: 0.5
+                      marginTop: 0.5,
                     }}
                     key={i}
                     {...register("props." + feat.prop, { required: true })}

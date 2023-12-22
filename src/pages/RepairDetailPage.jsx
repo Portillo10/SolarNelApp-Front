@@ -37,10 +37,22 @@ function RepairDetailPage() {
   };
 
   const getReplacementProp = (replacement) => {
+    const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+    const propsValues = Object.values(replacement.props);
+    const propsKeys = Object.keys(replacement.props);
+    const numericProp = propsValues.find((prop) => {
+      for (let i = 0; i < prop.length; i++) {
+        if (numbers.includes(prop[i])) {
+          return true;
+        }
+      }
+    });
+    let propIndex =
+      propsValues.length > 1 ? propsValues.indexOf(numericProp) : 0;
     const str =
       "(" +
-      replacement.props[Object.keys(replacement.props)[0]] +
-      getSymbol(Object.keys(replacement.props)[0]) +
+      replacement.props[propsKeys[propIndex]] +
+      getSymbol(propsKeys[propIndex]) +
       ")";
 
     return str;
@@ -100,7 +112,9 @@ function RepairDetailPage() {
                 <span className="flex text-[#006400] items-center dark:text-green-500">
                   <AttachMoneyRounded fontSize="small" />
                   <p className="text-lg font-bold">
-                    {cashFormat(replacement.replacement.price * replacement.quantity)}
+                    {cashFormat(
+                      replacement.replacement.price * replacement.quantity
+                    )}
                   </p>
                 </span>
               </span>
