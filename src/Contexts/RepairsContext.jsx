@@ -71,17 +71,17 @@ export const RepairsProvider = ({ children }) => {
   const loadCards = (cardList = []) => {
     if (cardList.length == 0)
       return <p className="text-center">No se encontraron coincidencias</p>;
-    if (search == "") return cardList;
+    if (search == "")
+      return cardList.sort(
+        ({ props: { device } }, { props: { device: deviceB } }) =>
+          device.numberCode - deviceB.numberCode
+      );
     const cards = cardList.filter(({ props: { device } }) => {
       if (
         removeAccents(device.customerName)
           .toLowerCase()
           .includes(removeAccents(search.toLowerCase())) ||
-        (
-          removeAccents(device.deviceType) +
-          " " +
-          removeAccents(device.brand)
-        )
+        (removeAccents(device.deviceType) + " " + removeAccents(device.brand))
           .toLowerCase()
           .includes(removeAccents(search.toLowerCase())) ||
         device.numberCode.toString().includes(search)
@@ -96,7 +96,10 @@ export const RepairsProvider = ({ children }) => {
           No se encontraron resultados
         </p>
       );
-    return cards;
+    return cards.sort(
+      ({ props: { device } }, { props: { device: deviceB } }) =>
+        device.numberCode - deviceB.numberCode
+    );
   };
 
   const findDevice = async (id) => {
