@@ -1,7 +1,7 @@
 import { baseUrl } from "./config.services"
 import axios from "./instance.service"
 
-const replacementBaseUrl = window.location.hostname == "localhost"?"http://localhost:5000/replacement": baseUrl + "/replacement"
+const replacementBaseUrl = baseUrl + "/replacement"
 
 export const getTypes = () => {
   return axios.get(replacementBaseUrl + "/all_types")

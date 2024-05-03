@@ -1,1 +1,1 @@
-export const baseUrl = "https://solarnelapp-back-dev-exkh.1.us-1.fl0.io"
+export const baseUrl = "https://solarnelapp-back.onrender.com"

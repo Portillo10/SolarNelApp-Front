@@ -3,7 +3,7 @@ import axios from "axios";
 
 const instance = axios.create(
   {
-    baseURL: "https://solarnelapp-back-dev-exkh.1.us-1.fl0.io",
+    baseURL: "https://solarnelapp-back.onrender.com",
     withCredentials: true
   }
 )

@@ -1,7 +1,7 @@
 import { baseUrl } from "./config.services"
 import axios from "./instance.service"
 
-const deviceBaseUrl = window.location.hostname == "localhost"?"http://localhost:5000/device": baseUrl + "/device"
+const deviceBaseUrl = baseUrl + "/device"
 
 
 export const getAllDevices = async () => {
